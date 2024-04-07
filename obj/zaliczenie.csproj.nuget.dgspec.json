@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\mati.LAPTOP-RTJV6IEM\\Documents\\GitHub\\zaliczenie\\zaliczenie.csproj": {}
+    "D:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj": {}
   },
   "projects": {
-    "c:\\Users\\mati.LAPTOP-RTJV6IEM\\Documents\\GitHub\\zaliczenie\\zaliczenie.csproj": {
+    "D:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\mati.LAPTOP-RTJV6IEM\\Documents\\GitHub\\zaliczenie\\zaliczenie.csproj",
+        "projectUniqueName": "D:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj",
         "projectName": "zaliczenie",
-        "projectPath": "c:\\Users\\mati.LAPTOP-RTJV6IEM\\Documents\\GitHub\\zaliczenie\\zaliczenie.csproj",
-        "packagesPath": "C:\\Users\\mati.LAPTOP-RTJV6IEM\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\mati.LAPTOP-RTJV6IEM\\Documents\\GitHub\\zaliczenie\\obj\\",
+        "projectPath": "D:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj",
+        "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
+        "outputPath": "D:\\Projekty\\VisualStudioCode\\zaliczenie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mati.LAPTOP-RTJV6IEM\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
