@@ -12,3 +12,17 @@ c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\refin
 c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\zaliczenie.pdb
 c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\zaliczenie.genruntimeconfig.cache
 c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\ref\zaliczenie.dll
+d:\Projekty\VisualStudioCode\zaliczenie\bin\Debug\net7.0\zaliczenie.exe
+d:\Projekty\VisualStudioCode\zaliczenie\bin\Debug\net7.0\zaliczenie.deps.json
+d:\Projekty\VisualStudioCode\zaliczenie\bin\Debug\net7.0\zaliczenie.runtimeconfig.json
+d:\Projekty\VisualStudioCode\zaliczenie\bin\Debug\net7.0\zaliczenie.dll
+d:\Projekty\VisualStudioCode\zaliczenie\bin\Debug\net7.0\zaliczenie.pdb
+d:\Projekty\VisualStudioCode\zaliczenie\obj\Debug\net7.0\zaliczenie.GeneratedMSBuildEditorConfig.editorconfig
+d:\Projekty\VisualStudioCode\zaliczenie\obj\Debug\net7.0\zaliczenie.AssemblyInfoInputs.cache
+d:\Projekty\VisualStudioCode\zaliczenie\obj\Debug\net7.0\zaliczenie.AssemblyInfo.cs
+d:\Projekty\VisualStudioCode\zaliczenie\obj\Debug\net7.0\zaliczenie.csproj.CoreCompileInputs.cache
+d:\Projekty\VisualStudioCode\zaliczenie\obj\Debug\net7.0\zaliczenie.dll
+d:\Projekty\VisualStudioCode\zaliczenie\obj\Debug\net7.0\refint\zaliczenie.dll
+d:\Projekty\VisualStudioCode\zaliczenie\obj\Debug\net7.0\zaliczenie.pdb
+d:\Projekty\VisualStudioCode\zaliczenie\obj\Debug\net7.0\zaliczenie.genruntimeconfig.cache
+d:\Projekty\VisualStudioCode\zaliczenie\obj\Debug\net7.0\ref\zaliczenie.dll

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj": {}
+    "d:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj": {}
   },
   "projects": {
-    "D:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj": {
+    "d:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj",
+        "projectUniqueName": "d:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj",
         "projectName": "zaliczenie",
-        "projectPath": "D:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj",
+        "projectPath": "d:\\Projekty\\VisualStudioCode\\zaliczenie\\zaliczenie.csproj",
         "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-        "outputPath": "D:\\Projekty\\VisualStudioCode\\zaliczenie\\obj\\",
+        "outputPath": "d:\\Projekty\\VisualStudioCode\\zaliczenie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config"
