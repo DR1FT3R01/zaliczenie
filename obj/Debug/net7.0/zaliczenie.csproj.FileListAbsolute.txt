@@ -1,0 +1,14 @@
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\bin\Debug\net7.0\zaliczenie.exe
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\bin\Debug\net7.0\zaliczenie.deps.json
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\bin\Debug\net7.0\zaliczenie.runtimeconfig.json
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\bin\Debug\net7.0\zaliczenie.dll
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\bin\Debug\net7.0\zaliczenie.pdb
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\zaliczenie.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\zaliczenie.AssemblyInfoInputs.cache
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\zaliczenie.AssemblyInfo.cs
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\zaliczenie.csproj.CoreCompileInputs.cache
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\zaliczenie.dll
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\refint\zaliczenie.dll
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\zaliczenie.pdb
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\zaliczenie.genruntimeconfig.cache
+c:\Users\mati.LAPTOP-RTJV6IEM\Documents\GitHub\zaliczenie\obj\Debug\net7.0\ref\zaliczenie.dll
