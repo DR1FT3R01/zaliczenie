@@ -1,12 +1,15 @@
-﻿
-
-
-
-Console.WriteLine("Hello, World!");
+﻿Console.WriteLine("Hello, World!");
 Console.WriteLine("Rawr");
 Console.WriteLine("helo");
 // idk
 
-Player = new Player();
-Player.Name = "";
-Player.Description = "";
+Player player = new Player();
+
+while (true)
+{
+    //Console.Clear();
+    Console.WriteLine($"X: {player.X} Y: {player.Y}");
+    //Console.SetCursorPosition(player.X, player.Y);
+    Console.Write("@");
+    player.Move();
+}
