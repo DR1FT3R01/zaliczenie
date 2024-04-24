@@ -1,19 +1,46 @@
 class Player
 {
-    
-    public int X {get; set;}
-    public int Y {get; set;}
 
-   public void Move()
+   public Point Position {get; set;}
+
+   private Dictionary<ConsoleKey, Point> directions = new() 
+   {
+        {ConsoleKey.A, new Point(-1,0)}
+   };
+
+   public Player(int x, int y)
+   {
+    Position = new Point(x, y);
+   }
+
+   public Player (Point startingPosition)
+   {
+        Position = new Point(startingPosition);
+
+        directions[ConsoleKey.D] = new Point(1, 0);
+        directions[ConsoleKey.W] = new Point(0, -1);
+        directions[ConsoleKey.S] = new Point(0, 1);
+    }
+
+    public void Move()
     {
         ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-        if (pressedKey.Key == ConsoleKey.A)
+
+        if (directions.ContainsKey(pressedKey.Key))
         {
-            X -= 1;
+            Point direction = directions[pressedKey.Key];
+            Position.X += direction.X;
+            Position.Y += direction.Y;
         }
-        else if(pressedKey.Key == ConsoleKey.D)
-        {
-            X += 1;
-        }
+
+        // ConsoleKeyInfo pressedKey = Console.ReadKey(true);
+        // if (pressedKey.Key == ConsoleKey.A)
+        // {
+
+        // }
+        // else if(pressedKey.Key == ConsoleKey.D)
+        // {
+
+        // }
     }
 }
