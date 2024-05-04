@@ -33,14 +33,5 @@ class Player
             Position.Y += direction.Y;
         }
 
-        // ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-        // if (pressedKey.Key == ConsoleKey.A)
-        // {
-
-        // }
-        // else if(pressedKey.Key == ConsoleKey.D)
-        // {
-
-        // }
     }
 }
