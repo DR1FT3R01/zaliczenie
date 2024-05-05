@@ -1,6 +1,5 @@
 class Player
 {
-
    public Point Position {get; set;}
    public Point PreviousPosition {get; set;}
 
@@ -28,7 +27,7 @@ class Player
     public Player (Player other)
     {
         Position = new Point(other.Position);
-        PreviousPosition = new Point(other.Position);
+        PreviousPosition = new Point(other.PreviousPosition);
     }
 
     public Point GetNextPosition()
@@ -38,8 +37,8 @@ class Player
         ConsoleKeyInfo pressedKey = Console.ReadKey(true);
         if (directions.ContainsKey(pressedKey.Key))
         {
-            nextPosition.X = directions[pressedKey.Key].X;
-            nextPosition.Y = directions[pressedKey.Key].Y;
+            nextPosition.X += directions[pressedKey.Key].X;
+            nextPosition.Y += directions[pressedKey.Key].Y;
         }
 
         return  nextPosition;
@@ -47,14 +46,20 @@ class Player
 
     public void Move(Point targetPosition)
     {
-        ConsoleKeyInfo pressedKey = Console.ReadKey(true);
+        PreviousPosition.X = Position.X;
+        PreviousPosition.Y = Position.Y;
 
-        if (directions.ContainsKey(pressedKey.Key))
-        {
-            Point direction = directions[pressedKey.Key];
-            Position.X += direction.X;
-            Position.Y += direction.Y;
-        }
+        Position.X = targetPosition.X;
+        Position.Y = targetPosition.Y;
+        
+        // ConsoleKeyInfo pressedKey = Console.ReadKey(true);
+
+        // if (directions.ContainsKey(pressedKey.Key))
+        // {
+        //     Point direction = directions[pressedKey.Key];
+        //     Position.X += direction.X;
+        //     Position.Y += direction.Y;
+        // }
 
     }
 }

@@ -26,5 +26,4 @@ while (true)
 
     Console.SetCursorPosition(player.Position.X, player.Position.Y);
     Console.Write("@");
-     
 }
