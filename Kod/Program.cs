@@ -17,11 +17,16 @@ Console.Write("@");
 while (true)
 {
     Point nextPosition = player.GetNextPosition();
+
+    if (!map.IsPointCorrect(nextPosition))
+    {
+        continue;
+    }
+
     player.Move(nextPosition);
 
     char previousCell = map.GetCellAt(player.PreviousPosition);
-
-    Console.SetCursorPosition(player.Position.X, player.Position.Y);
+    Console.SetCursorPosition(player.PreviousPosition.X, player.PreviousPosition.Y);
     Console.Write(previousCell);
 
     Console.SetCursorPosition(player.Position.X, player.Position.Y);

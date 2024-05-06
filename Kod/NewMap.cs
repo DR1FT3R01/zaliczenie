@@ -17,7 +17,7 @@ public class Map
         "                  #.#                           #.#       #..........#",
         "                  #.#                           #.#########.........$#",
         "       ############.#####                       #....................#",
-        "       #..%.............#        ###########################........#################################",
+        "       #..%.............#        ###########################.........################################",
         "       #................#        #..........&.#            #.........*..............................*",
         "       #............$...#        #............##############.........################################",
         "       ##################        #...$.....................^.........#",
@@ -34,21 +34,21 @@ public class Map
         return previousCell;
     }
 
-    // internal bool IsPointCorrect(Point point)
-    // {
-    //     if (point.Y >= 0 && point.Y < mapData.Length)
-    //     {
-    //         if (point.X >= 0 && point.X < mapData[point.Y].Length)
-    //         {
-    //             if (GetCellAt(point) != '#')
-    //             {
-    //                 return true;
-    //             }
-    //         }
-    //     }
+    internal bool IsPointCorrect(Point point)
+    {
+        if (point.Y >= 0 && point.Y < mapData.Length)
+        {
+            if (point.X >= 0 && point.X < mapData[point.Y].Length)
+            {
+                if (GetCellAt(point) != '#')
+                {
+                    return true;
+                }
+            }
+        }
 
-//         return false;
-//     }
+        return false;
+    }
 
     public void DisplayMap()
     {
