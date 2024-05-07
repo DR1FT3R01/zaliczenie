@@ -1,7 +1,7 @@
 ﻿
 // idk
 
-Point playerPosition = new Point(4, 4);
+Point playerPosition = new Point(6, 5);
 Player player = new Player(playerPosition);
  
 Map map = new Map();
@@ -26,7 +26,7 @@ while (true)
 
     player.Move(nextPosition);
 
-    char previousCell = map.GetCellAt(player.PreviousPosition);
+    var previousCell = map.GetCellVisualAt(player.PreviousPosition);
     Console.SetCursorPosition(player.PreviousPosition.X, player.PreviousPosition.Y);
     Console.Write(previousCell);
 
