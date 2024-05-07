@@ -12,7 +12,8 @@ Console.Clear();
 map.DisplayMap();
 
 Console.SetCursorPosition(player.Position.X, player.Position.Y);
-Console.Write("@");
+Console.Write("█");
+Console.CursorVisible = false;
 
 while (true)
 {
@@ -30,5 +31,6 @@ while (true)
     Console.Write(previousCell);
 
     Console.SetCursorPosition(player.Position.X, player.Position.Y);
-    Console.Write("@");
+    Console.Write("█");
+    Console.CursorVisible = false;
 }
