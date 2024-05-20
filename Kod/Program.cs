@@ -3,10 +3,15 @@
 
 Point playerPosition = new Point(6, 5);
 Player player = new Player(playerPosition);
- 
+
 Map map = new Map();
+NPC npc = new NPC(12, 15, map);
 
 Console.Clear();
+map.DisplayMap();
+npc.Draw(map);
+Console.Clear();
+
 //Console.WriteLine($"Current position ({player.Position.X},{player.Position.Y})");
 
 map.DisplayMap();
