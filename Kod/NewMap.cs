@@ -1,11 +1,14 @@
+using System.Drawing;
+
 public class Map
 {
     private int[][] mapData;
     private Dictionary<int, char> cellVisuals = new Dictionary<int, char>{
         {1,'#'},    //ściana
         {3,'.'},    //pusta przestrzen
-        {2,' '}     //podloga
-                    // jakies itemy do zebrania        
+        {2,' '},    //podloga
+                    // jakies itemy do zebrania
+       {4, '*' }    // npc
     };
 
 
@@ -38,7 +41,7 @@ public class Map
         new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
         };
     }
-    
+
     public int GetCellAt(Point point)
     {
         return mapData[point.Y][point.X];
@@ -82,7 +85,12 @@ public class Map
                 Console.Write(cellVisual);
             }
             Console.WriteLine();
-        }   
-        
+        }
+
+    }
+
+    public void WrzucNPCa(Point position, int coWrzucic)
+    {
+        mapData[position.Y][position.X] = coWrzucic;
     }
 }
