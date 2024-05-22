@@ -2,6 +2,7 @@ class Player
 {
    public Point Position {get; set;}
    public Point PreviousPosition {get; set;}
+    public Map CurrentMap { get; set;}
 
    private Dictionary<ConsoleKey, Point> directions = new() 
    {
@@ -48,7 +49,8 @@ class Player
     {
         PreviousPosition.X = Position.X;
         PreviousPosition.Y = Position.Y;
-
+        Console.SetCursorPosition(Position.X, Position.Y);
+        Console.Write(CurrentMap.GetCellVisualAt(Position));
         Position.X = targetPosition.X;
         Position.Y = targetPosition.Y;
         
@@ -62,4 +64,17 @@ class Player
         // }
 
     }
+    public Point GetDirection(ConsoleKey key)
+    {
+        if (directions.ContainsKey(key))
+        {
+            return directions[key];
+        }
+        else
+        {
+          
+            return new Point(0, 0);
+        }
+    }
+
 }

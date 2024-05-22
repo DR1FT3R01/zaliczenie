@@ -3,7 +3,7 @@ using System.Drawing;
 public class Map
 {
     private int[][] mapData;
-    private Dictionary<int, char> cellVisuals = new Dictionary<int, char>{
+    public Dictionary<int, char> cellVisuals = new Dictionary<int, char>{
         {1,'#'},    //ściana
         {3,'.'},    //pusta przestrzen
         {2,' '},    //podloga
@@ -57,7 +57,7 @@ public class Map
     }
 
 
-    internal bool IsPointCorrect(Point point)
+    public bool IsPointCorrect(Point point)
     {
         if (point.Y >= 0 && point.Y < mapData.Length)
         {
@@ -89,8 +89,8 @@ public class Map
 
     }
 
-    public void WrzucNPCa(Point position, int coWrzucic)
+  /*  public void WrzucNPCa(Point position, int coWrzucic)
     {
         mapData[position.Y][position.X] = coWrzucic;
-    }
+    }*/
 }

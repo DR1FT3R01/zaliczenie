@@ -1,12 +1,110 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\mati.LAPTOP-RTJV6IEM\\Documents\\GitHub\\zaliczenie\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\kod\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|solutionrelative:kod\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\kod\\newmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|solutionrelative:kod\\newmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|d:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\kod\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|solutionrelative:kod\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\kod\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|solutionrelative:kod\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\kod\\point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA200C3A-A179-4E1A-B515-0FEDD0050234}|zaliczenie.csproj|solutionrelative:kod\\point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Npc.cs",
+              "DocumentMoniker": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\Npc.cs",
+              "RelativeDocumentMoniker": "Kod\\Npc.cs",
+              "ToolTip": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\Npc.cs*",
+              "RelativeToolTip": "Kod\\Npc.cs*",
+              "ViewState": "AQIAABUAAAAAAAAAAAAmwAsAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T08:52:48.533Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\Program.cs",
+              "RelativeDocumentMoniker": "Kod\\Program.cs",
+              "ToolTip": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\Program.cs",
+              "RelativeToolTip": "Kod\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T14:29:14.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Point.cs",
+              "DocumentMoniker": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\Point.cs",
+              "RelativeDocumentMoniker": "Kod\\Point.cs",
+              "ToolTip": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\Point.cs",
+              "RelativeToolTip": "Kod\\Point.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T14:29:13.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\Player.cs",
+              "RelativeDocumentMoniker": "Kod\\Player.cs",
+              "ToolTip": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\Player.cs",
+              "RelativeToolTip": "Kod\\Player.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T14:29:12.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NewMap.cs",
+              "DocumentMoniker": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\NewMap.cs",
+              "RelativeDocumentMoniker": "Kod\\NewMap.cs",
+              "ToolTip": "D:\\zaliczenieprojektskyba\\zaliczenie-main\\zaliczenie\\Kod\\NewMap.cs*",
+              "RelativeToolTip": "Kod\\NewMap.cs*",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAIwF4AAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T14:29:09.933Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
