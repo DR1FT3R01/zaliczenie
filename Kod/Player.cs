@@ -1,4 +1,4 @@
-class Player
+public class Player
 {
    public Point Position {get; set;}
    public Point PreviousPosition {get; set;}
@@ -13,7 +13,8 @@ class Player
    {
     Position = new Point(x, y);
     PreviousPosition = new Point(x, y);
-   }
+        CurrentMap = new Map(); 
+    }
 
    public Player (Point startingPosition)
    {
@@ -23,12 +24,15 @@ class Player
         directions[ConsoleKey.D] = new Point(1, 0);
         directions[ConsoleKey.W] = new Point(0, -1);
         directions[ConsoleKey.S] = new Point(0, 1);
+        CurrentMap = new Map(); 
+
     }
 
     public Player (Player other)
     {
         Position = new Point(other.Position);
         PreviousPosition = new Point(other.PreviousPosition);
+        CurrentMap = new Map();
     }
 
     public Point GetNextPosition()

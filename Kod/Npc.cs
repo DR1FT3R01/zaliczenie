@@ -9,10 +9,10 @@
 
         Position = new Point(x, y);
         PreviousPosition = new Point(x, y);
-       
-        CurrentMap = map;
 
-     
+        CurrentMap = map;
+        Dialogue = "";
+
     }
 
     public void Draw(Map map)
@@ -58,4 +58,11 @@
         return nextPosition;
     }
 
+    public string Dialogue { get; set; } = "lalalaa dopisac";
+
+    public void Interact(Player player)
+    {
+        // Wyświetl dialog NPC
+        Console.WriteLine(Dialogue);
+    }
 }

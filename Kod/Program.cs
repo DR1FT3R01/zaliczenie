@@ -22,6 +22,10 @@ class Program
         Console.Write("█");
         Console.CursorVisible = false;
 
+
+  
+
+
         while (true)
         {
 
@@ -47,8 +51,9 @@ class Program
             Console.SetCursorPosition(npc.Position.X, npc.Position.Y);
             Console.Write("*");
 
+        
 
-            Console.CursorVisible = false;
+
         }
     }
 }
