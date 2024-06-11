@@ -5,10 +5,10 @@ public class Map
     private int[][] mapData;
     private Dictionary<int, char> cellVisuals = new Dictionary<int, char>{
         {1,'#'},    //ściana
-        {3,'.'},    //pusta przestrzen
         {2,' '},    //podloga
+        {3,'.'},    //pusta przestrzen
                     // jakies itemy do zebrania
-       {4, '*' }    // npc
+        {4,'*'},    // npc
     };
 
 
