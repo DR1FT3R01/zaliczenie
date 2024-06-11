@@ -1,23 +1,19 @@
-﻿
-// idk
-
-Point playerPosition = new Point(6, 5);
+﻿Point playerPosition = new Point(6, 5);
 Player player = new Player(playerPosition);
 
 Map map = new Map();
 NPC npc = new NPC(12, 15, map);
 
 Console.Clear();
-map.DisplayMap();
+map.DisplayMap(new Point (5, 2));
 npc.Draw(map);
-Console.Clear();
 
 //Console.WriteLine($"Current position ({player.Position.X},{player.Position.Y})");
 
-map.DisplayMap();
+Console.Clear();
+map.DisplayMap(new Point (5, 2));
 
-Console.SetCursorPosition(player.Position.X, player.Position.Y);
-Console.Write("█");
+map.DrawSomethingAt (player.Visual, player.Position);
 Console.CursorVisible = false;
 
 while (true)
@@ -32,10 +28,7 @@ while (true)
     player.Move(nextPosition);
 
     var previousCell = map.GetCellVisualAt(player.PreviousPosition);
-    Console.SetCursorPosition(player.PreviousPosition.X, player.PreviousPosition.Y);
-    Console.Write(previousCell);
-
-    Console.SetCursorPosition(player.Position.X, player.Position.Y);
-    Console.Write("█");
+    map.DrawSomethingAt(previousCell, player.PreviousPosition);
+    map.DrawSomethingAt (player.Visual, player.Position);
     Console.CursorVisible = false;
 }

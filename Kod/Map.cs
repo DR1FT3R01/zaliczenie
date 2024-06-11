@@ -2,6 +2,7 @@ using System.Drawing;
 
 public class Map
 {
+    public Point Origin { get; set; }
     private int[][] mapData;
     private Dictionary<int, char> cellVisuals = new Dictionary<int, char>{
         {1,'#'},    //ściana
@@ -40,6 +41,9 @@ public class Map
         new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
         new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
         };
+
+        Origin = new Point (0, 0);
+
     }
 
     public int GetCellAt(Point point)
@@ -73,10 +77,14 @@ public class Map
         return false;
     }
 
-    public void DisplayMap()
+    public void DisplayMap(Point origin)
     {
+        Origin = origin;
+
+        Console.CursorTop = origin.Y;
         for (int y = 0; y < mapData.Length; y++)
         {
+            Console.CursorLeft = origin.X;
             for (int x = 0; x < mapData[y].Length; x++)
             {
                 ///Console.WriteLine(mapData[y][x]);
@@ -92,5 +100,11 @@ public class Map
     public void WrzucNPCa(Point position, int coWrzucic)
     {
         mapData[position.Y][position.X] = coWrzucic;
+    }
+
+    internal void DrawSomethingAt (char visual, Point position)
+    {
+        Console.SetCursorPosition(position.X + Origin.X, position.Y + Origin.Y);
+        Console.Write(visual);
     }
 }

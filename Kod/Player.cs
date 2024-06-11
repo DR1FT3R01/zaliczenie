@@ -1,7 +1,10 @@
+using System.Dynamic;
+
 class Player
 {
-   public Point Position {get; set;}
-   public Point PreviousPosition {get; set;}
+    public char Visual { get; set;} = '█';
+   public Point Position { get; set;}
+   public Point PreviousPosition { get; set;}
 
    private Dictionary<ConsoleKey, Point> directions = new() 
    {
