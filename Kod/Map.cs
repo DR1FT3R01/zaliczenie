@@ -49,10 +49,6 @@ public class Map
     public int GetCellAt(Point point)
     {
         return mapData[point.Y][point.X];
-        // string previousRow = mapData[pointX,Y];
-        // char previousCell = previousRow[point2,X];
-
-        // return previousCell;
     }
 
     public char GetCellVisualAt(Point point)
@@ -87,7 +83,6 @@ public class Map
             Console.CursorLeft = origin.X;
             for (int x = 0; x < mapData[y].Length; x++)
             {
-                ///Console.WriteLine(mapData[y][x]);
                 var cellValue = mapData[y][x];
                 var cellVisual = cellVisuals[cellValue];
                 Console.Write(cellVisual);

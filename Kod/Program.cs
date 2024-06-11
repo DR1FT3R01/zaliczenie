@@ -1,4 +1,6 @@
-﻿Point playerPosition = new Point(6, 5);
+﻿Console.CursorVisible = false;
+
+Point playerPosition = new Point(6, 5);
 Player player = new Player(playerPosition);
 
 Map map = new Map();
@@ -8,13 +10,10 @@ Console.Clear();
 map.DisplayMap(new Point (5, 2));
 npc.Draw(map);
 
-//Console.WriteLine($"Current position ({player.Position.X},{player.Position.Y})");
-
 Console.Clear();
 map.DisplayMap(new Point (5, 2));
 
 map.DrawSomethingAt (player.Visual, player.Position);
-Console.CursorVisible = false;
 
 while (true)
 {
@@ -30,5 +29,4 @@ while (true)
     var previousCell = map.GetCellVisualAt(player.PreviousPosition);
     map.DrawSomethingAt(previousCell, player.PreviousPosition);
     map.DrawSomethingAt (player.Visual, player.Position);
-    Console.CursorVisible = false;
 }

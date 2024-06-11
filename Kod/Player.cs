@@ -54,15 +54,5 @@ class Player
 
         Position.X = targetPosition.X;
         Position.Y = targetPosition.Y;
-        
-        // ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-
-        // if (directions.ContainsKey(pressedKey.Key))
-        // {
-        //     Point direction = directions[pressedKey.Key];
-        //     Position.X += direction.X;
-        //     Position.Y += direction.Y;
-        // }
-
     }
 }
