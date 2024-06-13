@@ -2,14 +2,13 @@ using System.Drawing;
 
 public class Map
 {
-    public Point Origin { get; set; }
     private int[][] mapData;
-    private Dictionary<int, char> cellVisuals = new Dictionary<int, char>{
+    public Dictionary<int, char> cellVisuals = new Dictionary<int, char>{
         {1,'#'},    //ściana
-        {2,' '},    //podloga
         {3,'.'},    //pusta przestrzen
+        {2,' '},    //podloga
                     // jakies itemy do zebrania
-        {4,'*'},    // npc
+       {4, '*' }    // npc
     };
 
     //kolorki
@@ -58,14 +57,15 @@ public class Map
         new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
         new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
         };
-
-        Origin = new Point (0, 0);
-
     }
 
     public int GetCellAt(Point point)
     {
         return mapData[point.Y][point.X];
+        // string previousRow = mapData[pointX,Y];
+        // char previousCell = previousRow[point2,X];
+
+        // return previousCell;
     }
 
     public char GetCellVisualAt(Point point)
@@ -74,7 +74,7 @@ public class Map
     }
 
 
-    internal bool IsPointCorrect(Point point)
+    public bool IsPointCorrect(Point point)
     {
         if (point.Y >= 0 && point.Y < mapData.Length)
         {
@@ -90,16 +90,13 @@ public class Map
         return false;
     }
 
-    public void DisplayMap(Point origin)
+    public void DisplayMap()
     {
-        Origin = origin;
-
-        Console.CursorTop = origin.Y;
         for (int y = 0; y < mapData.Length; y++)
         {
-            Console.CursorLeft = origin.X;
             for (int x = 0; x < mapData[y].Length; x++)
             {
+                ///Console.WriteLine(mapData[y][x]);
                 var cellValue = mapData[y][x];
                 var cellVisual = cellVisuals[cellValue];
                 var cellColor = colorMap[cellValue];
