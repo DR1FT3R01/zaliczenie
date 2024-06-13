@@ -12,6 +12,23 @@ public class Map
         {4,'*'},    // npc
     };
 
+    //kolorki
+    // Black (0),
+    // DarkBlue (1), Blue (9),
+    // DarkCyan (3), Cyan (11),
+    // DarkGray (8), Gray (7),
+    // DarkGreen (2), Green (10),
+    // DarkMagenta (5), Magenta (13),
+    // DarkRed (4), Red (12),
+    // DarkYellow (6), Yellow (14),
+    // White (15)
+    private Dictionary<int, ConsoleColor> colorMap = new Dictionary<int, ConsoleColor>{
+        {1, ConsoleColor.DarkBlue},          //ściana
+        {2, ConsoleColor.Black},             //podłoga
+        {3, ConsoleColor.Gray},              //pusta przestrzeń
+        {4, ConsoleColor.Yellow},            //NPC?
+    };
+
 
     public Map()
     {
@@ -85,7 +102,10 @@ public class Map
             {
                 var cellValue = mapData[y][x];
                 var cellVisual = cellVisuals[cellValue];
+                var cellColor = colorMap[cellValue];
+                Console.ForegroundColor = cellColor; //?
                 Console.Write(cellVisual);
+                Console.ResetColor();
             }
             Console.WriteLine();
         }
@@ -101,5 +121,16 @@ public class Map
     {
         Console.SetCursorPosition(position.X + Origin.X, position.Y + Origin.Y);
         Console.Write(visual);
+    }
+
+    internal void RedrawCellAt(Point position)
+    {
+        var cellValue = GetCellAt(position);
+        var cellVisual = GetCellVisualAt(position);
+        var cellColor = colorMap[cellValue];
+
+        Console.ForegroundColor = cellColor;
+        DrawSomethingAt(cellVisual, position);
+        Console.ResetColor();
     }
 }

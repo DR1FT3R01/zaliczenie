@@ -26,7 +26,6 @@ while (true)
 
     player.Move(nextPosition);
 
-    var previousCell = map.GetCellVisualAt(player.PreviousPosition);
-    map.DrawSomethingAt(previousCell, player.PreviousPosition);
+    map.RedrawCellAt(player.PreviousPosition);
     map.DrawSomethingAt (player.Visual, player.Position);
 }
