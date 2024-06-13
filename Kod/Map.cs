@@ -2,6 +2,7 @@ using System.Drawing;
 
 public class Map
 {
+    public Point Origin { get; set; }
     private int[][] mapData;
     public Dictionary<int, char> cellVisuals = new Dictionary<int, char>{
         {1,'#'},    //ściana
@@ -57,6 +58,9 @@ public class Map
         new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
         new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
         };
+
+        Origin = new Point (0, 0);
+
     }
 
     public int GetCellAt(Point point)
@@ -74,7 +78,7 @@ public class Map
     }
 
 
-    public bool IsPointCorrect(Point point)
+    internal bool IsPointCorrect(Point point)
     {
         if (point.Y >= 0 && point.Y < mapData.Length)
         {
@@ -90,10 +94,15 @@ public class Map
         return false;
     }
 
-    public void DisplayMap()
+    public void DisplayMap(Point origin)
     {
+        Origin = origin;
+
+        Console.CursorTop = origin.Y;
+
         for (int y = 0; y < mapData.Length; y++)
         {
+            Console.CursorLeft = origin.X;
             for (int x = 0; x < mapData[y].Length; x++)
             {
                 ///Console.WriteLine(mapData[y][x]);

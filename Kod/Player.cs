@@ -1,5 +1,6 @@
 public class Player
 {
+    public char Visual { get; set; } = '█';
    public Point Position {get; set;}
    public Point PreviousPosition {get; set;}
     public Map CurrentMap { get; set;}
@@ -11,8 +12,8 @@ public class Player
 
    public Player(int x, int y)
    {
-    Position = new Point(x, y);
-    PreviousPosition = new Point(x, y);
+        Position = new Point(x, y);
+        PreviousPosition = new Point(x, y);
         CurrentMap = new Map(); 
     }
 
@@ -53,19 +54,10 @@ public class Player
     {
         PreviousPosition.X = Position.X;
         PreviousPosition.Y = Position.Y;
-        Console.SetCursorPosition(Position.X, Position.Y);
-        Console.Write(CurrentMap.GetCellVisualAt(Position));
+       // Console.SetCursorPosition(Position.X, Position.Y);
+       // Console.Write(CurrentMap.GetCellVisualAt(Position));
         Position.X = targetPosition.X;
         Position.Y = targetPosition.Y;
-        
-        // ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-
-        // if (directions.ContainsKey(pressedKey.Key))
-        // {
-        //     Point direction = directions[pressedKey.Key];
-        //     Position.X += direction.X;
-        //     Position.Y += direction.Y;
-        // }
 
     }
     public Point GetDirection(ConsoleKey key)

@@ -3,29 +3,28 @@
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main(string[] args) //?
     {
+        Console.CursorVisible = false;
        
-        Console.ReadKey();
+        //Console.ReadKey();  //uncomment this later
+
         Map map = new Map();
 
         Point playerPosition = new Point(6, 5);
         Player player = new Player(playerPosition);
-        player.CurrentMap = map;
+
+        player.CurrentMap = map;    //?
+
         NPC npc = new NPC(14, 16, map);
 
-        Console.SetCursorPosition(0, 0);
-        map.DisplayMap();
+        Console.SetCursorPosition(0, 0);    //?
+        Console.Clear();
+        map.DisplayMap(new Point (5, 2));
 
         npc.Draw(map);
 
-        Console.SetCursorPosition(player.Position.X, player.Position.Y);
-        Console.Write("█");
-        Console.CursorVisible = false;
-
-
-  
-
+        map.DrawSomethingAt (player.Visual, player.Position);
 
         while (true)
         {
@@ -34,12 +33,12 @@ class Program
             Point nextPosition = player.GetNextPosition();
             if (map.IsPointCorrect(nextPosition))
             {
-                player.Move(nextPosition);
+                //continue
+                player.Move(nextPosition);  //?
             }
+            //player.Move(nextPosition);
 
-            Console.SetCursorPosition(player.Position.X, player.Position.Y);
-            Console.Write("█");
-
+            /*
             Random random = new Random();
             Point nextNpcPosition = new(random.Next(-1, 2), random.Next(-1, 2));
             nextNpcPosition.X += npc.Position.X;
@@ -51,15 +50,14 @@ class Program
             
             Console.SetCursorPosition(npc.Position.X, npc.Position.Y);
             Console.Write("*");
+            */
+            
+            //player.Move(nextPosition);  //?
 
-        
-
+            map.RedrawCellAt(player.PreviousPosition);
+            map.DrawSomethingAt (player.Visual, player.Position);
 
         }
     }
 
-    player.Move(nextPosition);
-
-    map.RedrawCellAt(player.PreviousPosition);
-    map.DrawSomethingAt (player.Visual, player.Position);
 }
