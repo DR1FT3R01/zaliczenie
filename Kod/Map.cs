@@ -29,6 +29,7 @@ public class Map
         {4, ConsoleColor.Yellow},            //NPC?
     };
 
+    private int [] walkableCellTypes = new int[] {2};
 
     public Map()
     {
@@ -84,7 +85,8 @@ public class Map
         {
             if (point.X >= 0 && point.X < mapData[point.Y].Length)
             {
-                if (GetCellAt(point) != 1)
+                if (walkableCellTypes.Contains(GetCellAt(point)))
+                //if (GetCellAt(point) != 1)
                 {
                     return true;
                 }
@@ -108,7 +110,7 @@ public class Map
                 ///Console.WriteLine(mapData[y][x]);
                 var cellValue = mapData[y][x];
                 var cellVisual = cellVisuals[cellValue];
-                var cellColor = colorMap[cellValue];
+                var cellColor = GetCellColorByValue(cellValue);
                 Console.ForegroundColor = cellColor; //?
                 Console.Write(cellVisual);
                 Console.ResetColor();
@@ -129,11 +131,16 @@ public class Map
         Console.Write(visual);
     }
 
+    private ConsoleColor GetCellColorByValue(int value)
+    {
+        return colorMap.GetValueOrDefault(value, ConsoleColor.Gray);
+    }
+
     internal void RedrawCellAt(Point position)
     {
         var cellValue = GetCellAt(position);
         var cellVisual = GetCellVisualAt(position);
-        var cellColor = colorMap[cellValue];
+        var cellColor = GetCellColorByValue(cellValue);
 
         Console.ForegroundColor = cellColor;
         DrawSomethingAt(cellVisual, position);
