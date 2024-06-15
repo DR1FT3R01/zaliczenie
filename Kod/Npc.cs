@@ -5,6 +5,7 @@
     public Point Position { get; set; }
     public Point PreviousPosition { get; set; }
     public Map CurrentMap { get; set; }
+    
     public NPC(int x, int y, Map map)
     {
 
@@ -16,15 +17,15 @@
 
     }
 
-    public void Draw(Map map)
-    {
-        if (map.IsPointCorrect(Position))
-        {
-            Console.SetCursorPosition(Position.X, Position.Y);
-            //Console.Write(map.cellVisuals[ZnacznikWTablicy]);
-            Console.Write(Visual);
-        }
-    }
+    // public void Draw(Map map)
+    // {
+    //     if (map.IsPointCorrect(Position))
+    //     {
+    //         Console.SetCursorPosition(Position.X, Position.Y);
+    //         //Console.Write(map.cellVisuals[ZnacznikWTablicy]);
+    //         Console.Write(Visual);
+    //     }
+    // }
     public void Move(Point targetPosition)
     {
 

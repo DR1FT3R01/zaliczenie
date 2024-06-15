@@ -3,6 +3,17 @@ using System.Drawing;
 public class Map
 {
     public Point Origin { get; set; }
+    public Point Size   //map size
+    {
+        get
+        {
+            int y = mapData.Length;
+            int x = mapData[0].Length;
+
+            return new Point(x, y);
+        }
+    }
+
     private int[][] mapData;
     public Dictionary<CellType, char> cellVisuals = new Dictionary<CellType, char>{
         {CellType.Wall,'#'},
