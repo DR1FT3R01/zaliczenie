@@ -4,32 +4,21 @@ public class Map
 {
     public Point Origin { get; set; }
     private int[][] mapData;
-    public Dictionary<int, char> cellVisuals = new Dictionary<int, char>{
-        {1,'#'},    //ściana
-        {3,'.'},    //pusta przestrzen
-        {2,' '},    //podloga
-                    // jakies itemy do zebrania
-       {4, '*' }    // npc
+    public Dictionary<CellType, char> cellVisuals = new Dictionary<CellType, char>{
+        {CellType.Wall,'#'},
+        {CellType.Empty,'.'},
+        {CellType.Floor,' '},
     };
 
-    //kolorki
-    // Black (0),
-    // DarkBlue (1), Blue (9),
-    // DarkCyan (3), Cyan (11),
-    // DarkGray (8), Gray (7),
-    // DarkGreen (2), Green (10),
-    // DarkMagenta (5), Magenta (13),
-    // DarkRed (4), Red (12),
-    // DarkYellow (6), Yellow (14),
-    // White (15)
-    private Dictionary<int, ConsoleColor> colorMap = new Dictionary<int, ConsoleColor>{
-        {1, ConsoleColor.DarkBlue},          //ściana
-        {2, ConsoleColor.Black},             //podłoga
-        {3, ConsoleColor.Gray},              //pusta przestrzeń
-        {4, ConsoleColor.Yellow},            //NPC?
+    private Dictionary<CellType, ConsoleColor> colorMap = new Dictionary<CellType, ConsoleColor>{
+        {CellType.Wall, ConsoleColor.DarkBlue},
+        {CellType.Floor, ConsoleColor.Black},
+        {CellType.Empty, ConsoleColor.Gray},
     };
 
-    private int [] walkableCellTypes = new int[] {2};
+    private CellType[] walkableCellTypes = new CellType[] {
+        CellType.Floor,
+    };
 
     public Map()
     {
@@ -64,15 +53,14 @@ public class Map
 
     }
 
-    public int GetCellAt(Point point)
+    public CellType GetCellAt(Point point)
     {
-        return mapData[point.Y][point.X];
-        // string previousRow = mapData[pointX,Y];
-        // char previousCell = previousRow[point2,X];
-
-        // return previousCell;
+        return GetCellAt(point.X,point.Y);
     }
-
+    private CellType GetCellAt(int x, int y)
+    {
+        return (CellType)mapData[y][x];
+    }
     public char GetCellVisualAt(Point point)
     {
         return cellVisuals[GetCellAt(point)];
@@ -108,7 +96,7 @@ public class Map
             for (int x = 0; x < mapData[y].Length; x++)
             {
                 ///Console.WriteLine(mapData[y][x]);
-                var cellValue = mapData[y][x];
+                var cellValue = GetCellAt(x, y);
                 var cellVisual = cellVisuals[cellValue];
                 var cellColor = GetCellColorByValue(cellValue);
                 Console.ForegroundColor = cellColor; //?
@@ -131,7 +119,7 @@ public class Map
         Console.Write(visual);
     }
 
-    private ConsoleColor GetCellColorByValue(int value)
+    private ConsoleColor GetCellColorByValue(CellType value)
     {
         return colorMap.GetValueOrDefault(value, ConsoleColor.Gray);
     }

@@ -1,23 +1,24 @@
 public class MiniGame
 {
-    public static void Main(string[] args)
+    //public static void Main(string[] args)
+    public void miniGame()
     {
-        Random random= new Random();
-        int choose;
-        int number;
+        // Random random= new Random();
+        // int choose;
+        // int number;
 
-        choose = int.Parse(args[0]);
-        number = random.Next(1, 10);
+        // choose = int.Parse(());
+        // number = random.Next(1, 10);
 
 
-        while (choose != number)
-        {
-            Console.WriteLine("Choose your number");
-            if (choose > number)
-            {
-                Console.WriteLine("Hit");
-            }
+        // while (choose != number)
+        // {
+        //     Console.WriteLine("Choose your number");
+        //     if (choose > number)
+        //     {
+        //         Console.WriteLine("Hit");
+        //     }
             
-        }
+        // }
     }
 }

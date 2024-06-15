@@ -1,6 +1,7 @@
 ﻿public class NPC
 {
-    public int ZnacznikWTablicy { get; set; } = 4;
+    public char Visual { get; set; } = '*';
+    //public int ZnacznikWTablicy { get; set; } = 4;
     public Point Position { get; set; }
     public Point PreviousPosition { get; set; }
     public Map CurrentMap { get; set; }
@@ -20,7 +21,8 @@
         if (map.IsPointCorrect(Position))
         {
             Console.SetCursorPosition(Position.X, Position.Y);
-            Console.Write(map.cellVisuals[ZnacznikWTablicy]);
+            //Console.Write(map.cellVisuals[ZnacznikWTablicy]);
+            Console.Write(Visual);
         }
     }
     public void Move(Point targetPosition)
