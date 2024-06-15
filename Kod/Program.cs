@@ -3,15 +3,17 @@
     static void Main(string[] args) //?
     {
 
-        //Console.ReadKey();  //uncomment this later
+        Console.ReadKey();
 
-        Point playerPosition = new Point(6, 5);
-        Player player = new Player('█', playerPosition);
+        Player player = new Player('█', new Point(6, 5));
+        Enemy troll =new Enemy('T', new Point(8,8));
+        NPC npc = new NPC('*', new Point (14, 16));
+        
         Map map = new Map();
 
-        player.CurrentMap = map;    //?
+        //player.CurrentMap = map;    //?
 
-        NPC npc = new NPC('*', 14, 16, map);
+
         Point mapOrigin = new Point(5, 2);
 
         Console.SetCursorPosition(0, 0);    //?
@@ -25,6 +27,7 @@
 
             map.DrawSomethingAt(npc.Visual, npc.Position);
             map.DrawSomethingAt(player.Visual, player.Position);
+            map.DrawSomethingAt(troll.Visual, troll.Position);
 
             while (true)
             {
@@ -37,22 +40,27 @@
                     map.DrawSomethingAt(player.Visual, player.Position);
                 }
 
-                /*
-                Random random = new Random();
-                Point nextNpcPosition = new(random.Next(-1, 2), random.Next(-1, 2));
-                nextNpcPosition.X += npc.Position.X;
-                nextNpcPosition.Y += npc.Position.Y;
-                if (map.IsPointCorrect(nextNpcPosition))
+                //-----
+
+                Point npcNextPosition = npc.GetNextPosition();
+                if (map.IsPointCorrect(npcNextPosition))
                 {
-                    npc.Move(nextNpcPosition);
+                    npc.Move(npcNextPosition);
+
+                    map.RedrawCellAt(npc.PreviousPosition);
+                    map.DrawSomethingAt(npc.Visual, npc.Position);
                 }
 
-                Console.SetCursorPosition(npc.Position.X, npc.Position.Y);
-                Console.Write("*");
-                */
+                //-----
 
-                //player.Move(nextPosition);  //?
+                Point trollNextPosition = troll.GetNextPosition();
+                if (map.IsPointCorrect(trollNextPosition))
+                {
+                    troll.Move(trollNextPosition);
 
+                    map.RedrawCellAt(troll.PreviousPosition);
+                    map.DrawSomethingAt(troll.Visual, troll.Position);
+                }
             }
         }
         else
