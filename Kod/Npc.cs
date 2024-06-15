@@ -1,14 +1,13 @@
 ﻿public class NPC
 {
     public char Visual { get; set; } = '*';
-    //public int ZnacznikWTablicy { get; set; } = 4;
     public Point Position { get; set; }
     public Point PreviousPosition { get; set; }
     public Map CurrentMap { get; set; }
     
-    public NPC(int x, int y, Map map)
+    public NPC(char visual, int x, int y, Map map)
     {
-
+        Visual = visual;
         Position = new Point(x, y);
         PreviousPosition = new Point(x, y);
 

@@ -10,15 +10,16 @@ public class Player
         {ConsoleKey.A, new Point(-1,0)}         //??
     };
 
-    public Player(int x, int y)
-    {
-        Position = new Point(x, y);
-        PreviousPosition = new Point(x, y);
-        CurrentMap = new Map();
-    }
+    // public Player(int x, int y)
+    // {
+    //     Position = new Point(x, y);
+    //     PreviousPosition = new Point(x, y);
+    //     CurrentMap = new Map();
+    // }
 
-    public Player(Point startingPosition)
+    public Player(char visual, Point startingPosition)
     {
+        Visual = visual;
         Position = new Point(startingPosition);
         PreviousPosition = new Point(startingPosition);
 

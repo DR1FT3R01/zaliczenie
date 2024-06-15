@@ -6,12 +6,12 @@
         //Console.ReadKey();  //uncomment this later
 
         Point playerPosition = new Point(6, 5);
-        Player player = new Player(playerPosition);
+        Player player = new Player('█', playerPosition);
         Map map = new Map();
 
         player.CurrentMap = map;    //?
 
-        NPC npc = new NPC(14, 16, map);
+        NPC npc = new NPC('*', 14, 16, map);
         Point mapOrigin = new Point(5, 2);
 
         Console.SetCursorPosition(0, 0);    //?
@@ -32,13 +32,10 @@
                 Point nextPosition = player.GetNextPosition();
                 if (map.IsPointCorrect(nextPosition))
                 {
-                    //continue
-                    player.Move(nextPosition);  //?
+                    player.Move(nextPosition);
+                    map.RedrawCellAt(player.PreviousPosition);
+                    map.DrawSomethingAt(player.Visual, player.Position);
                 }
-                //player.Move(nextPosition);
-
-                map.RedrawCellAt(player.PreviousPosition);
-                map.DrawSomethingAt(player.Visual, player.Position);
 
                 /*
                 Random random = new Random();
