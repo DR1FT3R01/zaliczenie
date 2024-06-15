@@ -3,16 +3,7 @@ using System.Drawing;
 public class Map
 {
     public Point Origin { get; set; }
-    public Point Size   //map size
-    {
-        get
-        {
-            int y = mapData.Length;
-            int x = mapData[0].Length;
-
-            return new Point(x, y);
-        }
-    }
+    public Point Size { get; }
 
     private int[][] mapData;
     public Dictionary<CellType, char> cellVisuals = new Dictionary<CellType, char>{
@@ -60,6 +51,10 @@ public class Map
         new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
         };
 
+        int y = mapData.Length;
+        int x = mapData[0].Length;
+        
+        Size = new Point(x, y);
         Origin = new Point (0, 0);
 
     }
