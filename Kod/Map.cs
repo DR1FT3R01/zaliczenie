@@ -80,7 +80,6 @@ public class Map
             if (point.X >= 0 && point.X < mapData[point.Y].Length)
             {
                 if (walkableCellTypes.Contains(GetCellAt(point)))
-                //if (GetCellAt(point) != 1)
                 {
                     return true;
                 }

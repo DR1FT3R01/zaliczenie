@@ -15,5 +15,4 @@ public class Point
         X = other.X;
         Y = other.Y;
     }
- 
 }
