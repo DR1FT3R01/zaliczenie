@@ -11,11 +11,11 @@ abstract class Character
     public Point Position { get; set; }
     public Point PreviousPosition { get; set; }
 
-    public Character (int x, int y)
-    {
-        Position = new Point (x, y);
-        PreviousPosition = new Point (x, y);
-    }
+    // public Character (int x, int y)
+    // {
+    //     Position = new Point (x, y);
+    //     PreviousPosition = new Point (x, y);
+    // }
 
     public Character (char visual, Point startingPosition)
     {
@@ -25,13 +25,14 @@ abstract class Character
     }
 
     //copy constructor
-    public Character(Player other)
-    {
-        MaxHp = other.MaxHp;
-        Hp = other.Hp;
-        Position = new Point (other.Position);
-        PreviousPosition = new Point (other.PreviousPosition);
-    }
+
+    // public Character(Player other)
+    // {
+    //     MaxHp = other.MaxHp;
+    //     Hp = other.Hp;
+    //     Position = new Point (other.Position);
+    //     PreviousPosition = new Point (other.PreviousPosition);
+    // }
 
     public void Heal (int amount)
     {

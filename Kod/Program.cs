@@ -2,12 +2,14 @@
 {
     static void Main(string[] args) //?
     {
-
         Console.ReadKey();
 
         Player player = new Player('█', new Point(6, 5));
         Enemy troll = new Enemy('T', new Point(8, 8));
         NPC npc = new NPC('*', new Point(14, 16));
+
+        Point playerPosition = new Point(6, 5);
+        ComposedPlayer composedPlayer = new ComposedPlayer('█', playerPosition);
 
         Character[] characters = new Character[]
         {
@@ -32,23 +34,32 @@
         {
             map.DisplayMap(mapOrigin);
 
-            foreach (var character in characters)
-            {
-                map.DrawSomethingAt(character.Visual, character.Position);
-            }
+            map.DrawSomethingAt(composedPlayer.VisualComponent.Visual, composedPlayer.PositionComponent.Position);
+            // foreach (var character in characters)
+            // {
+            //     map.DrawSomethingAt(character.Visual, character.Position);
+            // }
 
             while (true)
             {
-                foreach (var character in characters)
-                {
-                    Point nextPosition = character.GetNextPosition();
+                    Point nextPosition = composedPlayer.Movement.GetNextPosition();
                     if (map.IsPointCorrect(nextPosition))
                     {
-                        character.Move(nextPosition);
-                        map.RedrawCellAt(character.PreviousPosition);
-                        map.DrawSomethingAt(character.Visual, character.Position);
+                        composedPlayer.Movement.Move(nextPosition);
+                        map.RedrawCellAt(composedPlayer.Movement.PreviousPosition);
+                        map.DrawSomethingAt(composedPlayer.VisualComponent.Visual, composedPlayer.PositionComponent.Position);
                     }
-                }
+
+                // foreach (var character in characters)
+                // {
+                //     Point nextPosition = character.GetNextPosition();
+                //     if (map.IsPointCorrect(nextPosition))
+                //     {
+                //         character.Move(nextPosition);
+                //         map.RedrawCellAt(character.PreviousPosition);
+                //         map.DrawSomethingAt(character.Visual, character.Position);
+                //     }
+                // }
             }
         }
         else
