@@ -53,15 +53,15 @@ public class Map
 
         int y = mapData.Length;
         int x = mapData[0].Length;
-        
+
         Size = new Point(x, y);
-        Origin = new Point (0, 0);
+        Origin = new Point(0, 0);
 
     }
 
     public CellType GetCellAt(Point point)
     {
-        return GetCellAt(point.X,point.Y);
+        return GetCellAt(point.X, point.Y);
     }
     private CellType GetCellAt(int x, int y)
     {
@@ -118,7 +118,7 @@ public class Map
         mapData[position.Y][position.X] = coWrzucic;
     }
 
-    internal void DrawSomethingAt (char visual, Point position)
+    internal void DrawSomethingAt(char visual, Point position)
     {
         Console.SetCursorPosition(position.X + Origin.X, position.Y + Origin.Y);
         Console.Write(visual);

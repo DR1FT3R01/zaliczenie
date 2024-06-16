@@ -8,9 +8,9 @@ internal class HealthComponent
     int hp = 100;
     public int MaxHp { get; set; } = 100;
 
-        public void Heal (int amount)
+    public void Heal(int amount)
     {
-        Console.WriteLine ("Healing!");
+        Console.WriteLine("Healing!");
         Hp =+ amount;
     }
 }

@@ -18,7 +18,7 @@ public class MiniGame
         //     {
         //         Console.WriteLine("Hit");
         //     }
-            
+
         // }
     }
 }
