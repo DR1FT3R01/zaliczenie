@@ -4,19 +4,19 @@
     {
         Console.ReadKey();
 
-        Player player = new Player('█', new Point(6, 5));
-        Enemy troll = new Enemy('T', new Point(8, 8));
-        NPC npc = new NPC('*', new Point(14, 16));
+        //Player player = new Player('█', new Point(6, 5));
+        //Enemy troll = new Enemy('T', new Point(8, 8));
+        //NPC npc = new NPC('*', new Point(14, 16));
 
         Point playerPosition = new Point(6, 5);
         ComposedPlayer composedPlayer = new ComposedPlayer('█', playerPosition);
 
-        Character[] characters = new Character[]
-        {
-            player,
-            troll,
-            npc
-        };
+        // Character[] characters = new Character[]
+        // {
+        //     //player,
+        //     //troll,
+        //     //npc
+        // };
 
         Map map = new Map();
 
