@@ -11,7 +11,7 @@ class ComposedPlayer
         VisualComponent = new VisualComponent(visual);
         Health = new HealthComponent();
         PositionComponent = new PositionComponent(startingPosition);
-        InputComponent = new InputComponent();
-        Movement = new MovementComponent(PositionComponent,InputComponent);
+        InputComponent = new KeyboardInputComponent();
+        Movement = new MovementComponent(PositionComponent, InputComponent);
     }
 }

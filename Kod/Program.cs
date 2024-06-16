@@ -7,9 +7,10 @@
         //Player player = new Player('█', new Point(6, 5));
         //Enemy troll = new Enemy('T', new Point(8, 8));
         //NPC npc = new NPC('*', new Point(14, 16));
+        Map map = new Map();
 
-        Point playerPosition = new Point(6, 5);
-        ComposedPlayer composedPlayer = new ComposedPlayer('█', playerPosition);
+        ComposedPlayer composedPlayer = new ComposedPlayer('█', new Point(6, 5));
+        ComposedObject composedObject = new ComposedObject('O', map);
 
         // Character[] characters = new Character[]
         // {
@@ -18,10 +19,7 @@
         //     //npc
         // };
 
-        Map map = new Map();
-
         //player.CurrentMap = map;    //?
-
 
         Point mapOrigin = new Point(5, 2);
 
@@ -35,6 +33,8 @@
             map.DisplayMap(mapOrigin);
 
             map.DrawSomethingAt(composedPlayer.VisualComponent.Visual, composedPlayer.PositionComponent.Position);
+            map.DrawSomethingAt(composedObject.VisualComponent.Visual, composedObject.RandomPositionComponent.Position);
+
             // foreach (var character in characters)
             // {
             //     map.DrawSomethingAt(character.Visual, character.Position);
