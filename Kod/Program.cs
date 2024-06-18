@@ -7,6 +7,7 @@
         Map map = new Map();
 
         ComposedPlayer composedPlayer = new ComposedPlayer('█', new Point(6, 5));
+        ComposedEnemy composedEnemy= new ComposedEnemy('T', new Point(6,8));
         ComposedObject composedObject = new ComposedObject('O', map);
 
         Point mapOrigin = new Point(5, 2);
@@ -21,6 +22,7 @@
             map.DisplayMap(mapOrigin);
 
             map.DrawSomethingAt(composedPlayer.VisualComponent.Visual, composedPlayer.PositionComponent.Position);
+            map.DrawSomethingAt(composedEnemy.VisualComponent.Visual, composedEnemy.PositionComponent.Position);
             map.DrawSomethingAt(composedObject.VisualComponent.Visual, composedObject.RandomPositionComponent.Position);
 
             while (true)
@@ -42,6 +44,15 @@
                     //     Console.SetCursorPosition(0, 0);
                     //     Console.Write("               ");
                     // }
+                }
+
+                nextPosition = composedEnemy.Movement.GetNextPosition();
+                if (map.IsPointCorrect(nextPosition))
+                {
+                    composedEnemy.Movement.Move(nextPosition);
+
+                    map.RedrawCellAt(composedEnemy.Movement.PreviousPosition);
+                    map.DrawSomethingAt(composedEnemy.VisualComponent.Visual, composedEnemy.PositionComponent.Position);
                 }
             }
         }

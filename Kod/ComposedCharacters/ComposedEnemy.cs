@@ -12,8 +12,9 @@ class ComposedEnemy
         VisualComponent = new VisualComponent(visual);
         Health = new HealthComponent();
         PositionComponent = new PositionComponent(startingPosition);
-        InputComponent = new KeyboardInputComponent();
+        InputComponent = new RandomInputComponent();
         Movement = new MovementComponent(PositionComponent, InputComponent);
+        DamageComponent = new DamageComponent(PositionComponent);
     }
 
 }
