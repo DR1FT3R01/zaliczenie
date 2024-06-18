@@ -10,7 +10,11 @@ internal class HealthComponent
 
     public void Heal(int amount)
     {
-        Console.WriteLine("Healing!");
         Hp =+ amount;
+    }
+
+        public void TakeDamage(int amount)
+    {
+        Hp =- amount;
     }
 }

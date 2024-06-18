@@ -29,8 +29,19 @@
                 if (map.IsPointCorrect(nextPosition))
                 {
                     composedPlayer.Movement.Move(nextPosition);
+
                     map.RedrawCellAt(composedPlayer.Movement.PreviousPosition);
                     map.DrawSomethingAt(composedPlayer.VisualComponent.Visual, composedPlayer.PositionComponent.Position);
+
+                    // if (composedPlayer.DamageComponent.IsTargetInRange(enemyHere.RandomPositionComponent.Position))
+                    // {
+                    //     composedPlayer.DamageComponent.Attack();
+                    // }
+                    // else
+                    // {
+                    //     Console.SetCursorPosition(0, 0);
+                    //     Console.Write("               ");
+                    // }
                 }
             }
         }
