@@ -1,5 +1,6 @@
 ﻿class Program
 {
+
     static void Main(string[] args)
     {
         Console.ReadKey();
@@ -12,7 +13,7 @@
 
         Point mapOrigin = new Point(5, 2);
 
-        Console.SetCursorPosition(0, 0);    //?
+        Console.SetCursorPosition(0, 0);
         Console.CursorVisible = false;
         Console.Clear();
 
@@ -37,17 +38,27 @@
 
                     if (composedPlayer.DamageComponent.IsTargetInRange(composedEnemy.PositionComponent.Position))
                     {
-                        Console.SetCursorPosition(0, 0);
-                        Console.WriteLine($"Enemy with health {composedEnemy.Health.Hp} nearby! Press Any key to continue...");
-                        Console.ReadKey(true);
-                        composedPlayer.DamageComponent.Attack(composedEnemy.Health);
-                        Console.SetCursorPosition(0, 0);
-                        Console.WriteLine($"Enemy with health {composedEnemy.Health.Hp} nearby! Attacked!");
+                        WriteTextLine($"Enemy with health {composedEnemy.Health.Hp} nearby! Press E to Attack or Any other key to continue...");
+
+                        ConsoleKeyInfo pressedKey;
+                        pressedKey = Console.ReadKey();
+                        if (pressedKey.Key == ConsoleKey.E)
+                        {
+                            composedPlayer.DamageComponent.Attack(composedEnemy.Health);
+                            ClearTextLine(0);
+                            WriteTextLine($"You attacked the Enemy! Enemy health:{composedEnemy.Health.Hp}");
+                        }
+                        else
+                        {
+                            ClearTextLine(0);
+                            WriteTextLine("You dodged the enemy attack!");
+                        }
+
                     }
                     else
                     {
                         Console.SetCursorPosition(0, 0);
-                        Console.Write("                                                                            ");
+                        Console.Write(new string(' ', Console.WindowWidth));
                     }
                 }
 
@@ -65,5 +76,19 @@
         {
             Console.WriteLine("Terminal window is to small, make it bigger");
         }
+    }
+
+    public static void ClearTextLine(int row)
+    {
+        int currentLineCursor = row;
+        Console.SetCursorPosition(0, row);
+        Console.Write(new string(' ', Console.WindowWidth));
+        Console.SetCursorPosition(0, currentLineCursor);
+    }
+
+    public static void WriteTextLine(string text)
+    {
+        Console.SetCursorPosition(0, 0);
+        Console.Write(text);
     }
 }
