@@ -1,4 +1,4 @@
-abstract class InputComponent
+interface IInputComponent
 {
-    public abstract Point GetDirection();
+    Point GetDirection();
 }

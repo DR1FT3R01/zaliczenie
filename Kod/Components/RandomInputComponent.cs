@@ -1,4 +1,4 @@
-class RandomInputComponent : InputComponent
+class RandomInputComponent : IInputComponent
 {
     Random rng;
 
@@ -7,7 +7,7 @@ class RandomInputComponent : InputComponent
         rng = new Random();
     }
 
-    public override Point GetDirection()
+    public Point GetDirection()
     {
         //TODO delete diagonally walking
         return new Point(rng.Next(-1,2), rng.Next(-1,2));

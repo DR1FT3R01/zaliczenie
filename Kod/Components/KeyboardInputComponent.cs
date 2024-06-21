@@ -1,4 +1,4 @@
-internal class KeyboardInputComponent : InputComponent
+internal class KeyboardInputComponent : IInputComponent
 {
     private Dictionary<ConsoleKey, Point> directions;
 
@@ -13,7 +13,7 @@ internal class KeyboardInputComponent : InputComponent
         };
     }
 
-    public override Point GetDirection()
+    public Point GetDirection()
     {
 
         Point nextPosition = new Point(0, 0);
