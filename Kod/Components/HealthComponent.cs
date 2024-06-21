@@ -10,11 +10,11 @@ internal class HealthComponent
 
     public void Heal(int amount)
     {
-        Hp =+ amount;
+        Hp += amount;
     }
 
         public void TakeDamage(int amount)
     {
-        Hp =- amount;
+        Hp -= amount;
     }
 }

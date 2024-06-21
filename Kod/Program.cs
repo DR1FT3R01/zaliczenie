@@ -7,7 +7,7 @@
         Map map = new Map();
 
         ComposedPlayer composedPlayer = new ComposedPlayer('█', new Point(6, 5));
-        ComposedEnemy composedEnemy= new ComposedEnemy('T', new Point(6,8));
+        ComposedEnemy composedEnemy = new ComposedEnemy('T', new Point(6, 8));
         ComposedObject composedObject = new ComposedObject('O', map);
 
         Point mapOrigin = new Point(5, 2);
@@ -35,15 +35,20 @@
                     map.RedrawCellAt(composedPlayer.Movement.PreviousPosition);
                     map.DrawSomethingAt(composedPlayer.VisualComponent.Visual, composedPlayer.PositionComponent.Position);
 
-                    // if (composedPlayer.DamageComponent.IsTargetInRange(enemyHere.RandomPositionComponent.Position))
-                    // {
-                    //     composedPlayer.DamageComponent.Attack();
-                    // }
-                    // else
-                    // {
-                    //     Console.SetCursorPosition(0, 0);
-                    //     Console.Write("               ");
-                    // }
+                    if (composedPlayer.DamageComponent.IsTargetInRange(composedEnemy.PositionComponent.Position))
+                    {
+                        Console.SetCursorPosition(0, 0);
+                        Console.WriteLine($"Enemy with health {composedEnemy.Health.Hp} nearby! Press Any key to continue...");
+                        Console.ReadKey(true);
+                        composedPlayer.DamageComponent.Attack(composedEnemy.Health);
+                        Console.SetCursorPosition(0, 0);
+                        Console.WriteLine($"Enemy with health {composedEnemy.Health.Hp} nearby! Attacked!");
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition(0, 0);
+                        Console.Write("                                                                            ");
+                    }
                 }
 
                 nextPosition = composedEnemy.Movement.GetNextPosition();
