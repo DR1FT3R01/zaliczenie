@@ -151,15 +151,17 @@ public class Map
 
     }
 
-    public void WrzucNPCa(Point position, int coWrzucic)
-    {
-        mapData[position.Y][position.X] = coWrzucic;
-    }
+    // public void WrzucNPCa(Point position, int coWrzucic)
+    // {
+    //     mapData[position.Y][position.X] = coWrzucic;
+    // }
 
-    internal void DrawSomethingAt(char visual, Point position)
+    internal void DrawSomethingAt(char visual, ConsoleColor color, Point position)
     {
         Console.SetCursorPosition(position.X + Origin.X, position.Y + Origin.Y);
+        Console.ForegroundColor = color;
         Console.Write(visual);
+        Console.ResetColor();
     }
 
     private ConsoleColor GetCellColorByValue(CellType value)
@@ -173,8 +175,8 @@ public class Map
         var cellVisual = GetCellVisualAt(position);
         var cellColor = GetCellColorByValue(cellValue);
 
-        Console.ForegroundColor = cellColor;
-        DrawSomethingAt(cellVisual, position);
-        Console.ResetColor();
+        // Console.ForegroundColor = cellColor;
+        DrawSomethingAt(cellVisual, cellColor, position);
+        // Console.ResetColor();
     }
 }

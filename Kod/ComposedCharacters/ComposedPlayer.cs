@@ -7,9 +7,9 @@ class ComposedPlayer
     public IInputComponent InputComponent { get; }
     public InteractionComponent InteractionComponent { get; }
 
-    public ComposedPlayer(char visual, Point startingPosition)
+    public ComposedPlayer(char visual, ConsoleColor visualColor, Point startingPosition)
     {
-        VisualComponent = new VisualComponent(visual);
+        VisualComponent = new VisualComponent(visual, visualColor);
         Health = new HealthComponent();
         PositionComponent = new PositionComponent(startingPosition);
         InputComponent = new KeyboardInputComponent();

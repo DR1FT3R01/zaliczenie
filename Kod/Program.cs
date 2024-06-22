@@ -9,10 +9,10 @@
 
         Map map = new Map();
 
-        ComposedPlayer player = new ComposedPlayer('█', new Point(9, 4));
-        ComposedEnemy troll = new ComposedEnemy('T', "Troll", new Point(40, 25));
-        ComposedObject healthPotion = new ComposedObject('O', "Health Potion", map);
-        ComposedNpc hoodedFigure = new ComposedNpc('*', "Hooded Figure", new Point(60, 6));
+        ComposedPlayer player = new ComposedPlayer('█', ConsoleColor.Cyan, new Point(9, 4));
+        ComposedEnemy troll = new ComposedEnemy('T', ConsoleColor.Green, "Troll", new Point(40, 25));
+        ComposedObject healthPotion = new ComposedObject('O', ConsoleColor.Red, "Health Potion", map);
+        ComposedNpc hoodedFigure = new ComposedNpc('*', ConsoleColor.Yellow, "Hooded Figure", new Point(60, 6));
 
         Point mapOrigin = new Point(4, 2);
 
@@ -24,10 +24,10 @@
         {
             map.DisplayMap(mapOrigin);
 
-            map.DrawSomethingAt(player.VisualComponent.Visual, player.PositionComponent.Position);
-            map.DrawSomethingAt(troll.VisualComponent.Visual, troll.PositionComponent.Position);
-            map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.PositionComponent.Position);
-            map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.PositionComponent.Position);
+            map.DrawSomethingAt(player.VisualComponent.Visual, player.VisualComponent.VisualColor, player.PositionComponent.Position);
+            map.DrawSomethingAt(troll.VisualComponent.Visual, troll.VisualComponent.VisualColor, troll.PositionComponent.Position);
+            map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.VisualComponent.VisualColor, healthPotion.PositionComponent.Position);
+            map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.VisualComponent.VisualColor, hoodedFigure.PositionComponent.Position);
 
             while (true)
             {
@@ -37,7 +37,7 @@
                     player.Movement.Move(nextPosition);
 
                     map.RedrawCellAt(player.Movement.PreviousPosition);
-                    map.DrawSomethingAt(player.VisualComponent.Visual, player.PositionComponent.Position);
+                    map.DrawSomethingAt(player.VisualComponent.Visual, player.VisualComponent.VisualColor, player.PositionComponent.Position);
 
                     ConsoleKeyInfo pressedKey;
                     if (player.InteractionComponent.IsTargetInRange(troll.PositionComponent.Position))
@@ -87,7 +87,7 @@
                     troll.Movement.Move(nextPosition);
 
                     map.RedrawCellAt(troll.Movement.PreviousPosition);
-                    map.DrawSomethingAt(troll.VisualComponent.Visual, troll.PositionComponent.Position);
+                    map.DrawSomethingAt(troll.VisualComponent.Visual, troll.VisualComponent.VisualColor, troll.PositionComponent.Position);
                 }
 
                 nextPosition = hoodedFigure.Movement.GetNextPosition();
@@ -96,7 +96,7 @@
                     hoodedFigure.Movement.Move(nextPosition);
 
                     map.RedrawCellAt(hoodedFigure.Movement.PreviousPosition);
-                    map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.PositionComponent.Position);
+                    map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.VisualComponent.VisualColor, hoodedFigure.PositionComponent.Position);
                 }
             }
         }

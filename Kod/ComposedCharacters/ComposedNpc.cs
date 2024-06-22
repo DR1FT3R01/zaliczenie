@@ -6,9 +6,9 @@ class ComposedNpc
     public IInputComponent InputComponent { get; }
     public NameTagComponent NameTagComponent { get; }
 
-    public ComposedNpc(char visual, string nameTag, Point startingPoint)
+    public ComposedNpc(char visual, ConsoleColor visualColor, string nameTag, Point startingPoint)
     {
-        VisualComponent = new VisualComponent(visual);
+        VisualComponent = new VisualComponent(visual, visualColor);
         PositionComponent = new PositionComponent(startingPoint);
         InputComponent = new RandomInputComponent ();
         Movement = new MovementComponent(PositionComponent, InputComponent);

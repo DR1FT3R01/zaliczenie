@@ -8,9 +8,9 @@ class ComposedEnemy
     public InteractionComponent InteractionComponent { get; }
     public NameTagComponent NameTagComponent { get; }
 
-    public ComposedEnemy(char visual, string nameTag, Point startingPosition)
+    public ComposedEnemy(char visual, ConsoleColor visualColor, string nameTag, Point startingPosition)
     {
-        VisualComponent = new VisualComponent(visual);
+        VisualComponent = new VisualComponent(visual, visualColor);
         Health = new HealthComponent();
         PositionComponent = new PositionComponent(startingPosition);
         InputComponent = new RandomInputComponent();

@@ -17,4 +17,6 @@ internal class HealthComponent
     {
         Hp -= amount;
     }
+
+    //TODO check if character is alive
 }
