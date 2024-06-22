@@ -7,11 +7,12 @@
 
         Map map = new Map();
 
-        ComposedPlayer composedPlayer = new ComposedPlayer('█', new Point(6, 5));
-        ComposedEnemy composedEnemy = new ComposedEnemy('T', new Point(6, 8));
-        ComposedObject composedObject = new ComposedObject('O', map);
+        ComposedPlayer player = new ComposedPlayer('█', new Point(6, 5));
+        ComposedEnemy troll = new ComposedEnemy('T', "Troll", new Point(6, 8));
+        ComposedObject healthPotion = new ComposedObject('O', "Health Potion", map);
+        ComposedNpc hoodedFigure = new ComposedNpc('*', "Hooded Figure", new Point(15, 16));
 
-        Point mapOrigin = new Point(5, 2);
+        Point mapOrigin = new Point(4, 1);
 
         Console.SetCursorPosition(0, 0);
         Console.CursorVisible = false;
@@ -22,36 +23,37 @@
         {
             map.DisplayMap(mapOrigin);
 
-            map.DrawSomethingAt(composedPlayer.VisualComponent.Visual, composedPlayer.PositionComponent.Position);
-            map.DrawSomethingAt(composedEnemy.VisualComponent.Visual, composedEnemy.PositionComponent.Position);
-            map.DrawSomethingAt(composedObject.VisualComponent.Visual, composedObject.RandomPositionComponent.Position);
+            map.DrawSomethingAt(player.VisualComponent.Visual, player.PositionComponent.Position);
+            map.DrawSomethingAt(troll.VisualComponent.Visual, troll.PositionComponent.Position);
+            map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.PositionComponent.Position);
+            map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.PositionComponent.Position);
 
             while (true)
             {
-                Point nextPosition = composedPlayer.Movement.GetNextPosition();
+                Point nextPosition = player.Movement.GetNextPosition();
                 if (map.IsPointCorrect(nextPosition))
                 {
-                    composedPlayer.Movement.Move(nextPosition);
+                    player.Movement.Move(nextPosition);
 
-                    map.RedrawCellAt(composedPlayer.Movement.PreviousPosition);
-                    map.DrawSomethingAt(composedPlayer.VisualComponent.Visual, composedPlayer.PositionComponent.Position);
+                    map.RedrawCellAt(player.Movement.PreviousPosition);
+                    map.DrawSomethingAt(player.VisualComponent.Visual, player.PositionComponent.Position);
 
-                    if (composedPlayer.DamageComponent.IsTargetInRange(composedEnemy.PositionComponent.Position))
+                    if (player.InteractionComponent.IsTargetInRange(troll.PositionComponent.Position))
                     {
-                        WriteTextLine($"Enemy with health {composedEnemy.Health.Hp} nearby! Press E to Attack or Any other key to continue...");
+                        WriteTextLine($"Troll is nearby! Press E to Attack or Any other key to continue...");
 
                         ConsoleKeyInfo pressedKey;
                         pressedKey = Console.ReadKey();
                         if (pressedKey.Key == ConsoleKey.E)
                         {
-                            composedPlayer.DamageComponent.Attack(composedEnemy.Health);
+                            player.InteractionComponent.Attack(troll.Health);
                             ClearTextLine(0);
-                            WriteTextLine($"You attacked the Enemy! Enemy health:{composedEnemy.Health.Hp}");
+                            WriteTextLine($"You attacked the Enemy! Enemy health:{troll.Health.Hp}");
                         }
                         else
                         {
                             ClearTextLine(0);
-                            WriteTextLine("You dodged the enemy attack!");
+                            WriteTextLine("You ran away!");
                         }
 
                     }
@@ -62,19 +64,29 @@
                     }
                 }
 
-                nextPosition = composedEnemy.Movement.GetNextPosition();
+                nextPosition = troll.Movement.GetNextPosition();
                 if (map.IsPointCorrect(nextPosition))
                 {
-                    composedEnemy.Movement.Move(nextPosition);
+                    troll.Movement.Move(nextPosition);
 
-                    map.RedrawCellAt(composedEnemy.Movement.PreviousPosition);
-                    map.DrawSomethingAt(composedEnemy.VisualComponent.Visual, composedEnemy.PositionComponent.Position);
+                    map.RedrawCellAt(troll.Movement.PreviousPosition);
+                    map.DrawSomethingAt(troll.VisualComponent.Visual, troll.PositionComponent.Position);
+                }
+
+                nextPosition = hoodedFigure.Movement.GetNextPosition();
+                if (map.IsPointCorrect(nextPosition))
+                {
+                    hoodedFigure.Movement.Move(nextPosition);
+
+                    map.RedrawCellAt(hoodedFigure.Movement.PreviousPosition);
+                    map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.PositionComponent.Position);
                 }
             }
         }
         else
         {
-            Console.WriteLine("Terminal window is to small, make it bigger");
+            Console.WriteLine("Terminal window is too small, make it bigger");
+            Console.ReadKey(true); 
         }
     }
 

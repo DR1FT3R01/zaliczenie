@@ -5,16 +5,18 @@ class ComposedEnemy
     public PositionComponent PositionComponent { get; }
     public MovementComponent Movement { get; }
     public IInputComponent InputComponent { get; }
-    public DamageComponent DamageComponent { get; }
+    public InteractionComponent InteractionComponent { get; }
+    public NameTagComponent NameTagComponent { get; }
 
-    public ComposedEnemy(char visual, Point startingPosition)
+    public ComposedEnemy(char visual, string nameTag, Point startingPosition)
     {
         VisualComponent = new VisualComponent(visual);
         Health = new HealthComponent();
         PositionComponent = new PositionComponent(startingPosition);
         InputComponent = new RandomInputComponent();
         Movement = new MovementComponent(PositionComponent, InputComponent);
-        DamageComponent = new DamageComponent(PositionComponent);
+        InteractionComponent = new InteractionComponent(PositionComponent);
+        NameTagComponent = new NameTagComponent(nameTag);
     }
 
 }
