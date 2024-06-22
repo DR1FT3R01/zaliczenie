@@ -7,10 +7,10 @@
 
         Map map = new Map();
 
-        ComposedPlayer player = new ComposedPlayer('█', new Point(6, 5));
-        ComposedEnemy troll = new ComposedEnemy('T', "Troll", new Point(6, 8));
+        ComposedPlayer player = new ComposedPlayer('█', new Point(9, 4));
+        ComposedEnemy troll = new ComposedEnemy('T', "Troll", new Point(40, 25));
         ComposedObject healthPotion = new ComposedObject('O', "Health Potion", map);
-        ComposedNpc hoodedFigure = new ComposedNpc('*', "Hooded Figure", new Point(15, 16));
+        ComposedNpc hoodedFigure = new ComposedNpc('*', "Hooded Figure", new Point(60, 6));
 
         Point mapOrigin = new Point(4, 1);
 
