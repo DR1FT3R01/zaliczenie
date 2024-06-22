@@ -8,33 +8,44 @@ public class Map
     private int[][] mapData;
     public Dictionary<CellType, char> cellVisuals = new Dictionary<CellType, char>
     {
-        {CellType.Wall,'|'},
-        {CellType.Empty,' '},
-        {CellType.Floor,'-'},
-        {CellType.Rock,'~'},
+        //architecture
+        {CellType.WallVertical,'|'},
+        {CellType.WallHorizontal,'-'},
         {CellType.Corners,'+'},
+        {CellType.Rock,'~'},
+
+        //walkable
+        {CellType.Floor,' '},
         {CellType.Grass,':'},
-        {CellType.Enviro1,'!'},
-        {CellType.Enviro2,'&'},
         {CellType.Torch,'i'},
         {CellType.Web,'#'},
-        {CellType.Portal,'='},
+
+        //enviro
+        {CellType.Enviro1,'!'},
+        {CellType.Enviro2,'&'},
         {CellType.Ring,'@'},
         {CellType.Gold,'$'},
         {CellType.Left,'('},
         {CellType.Right,')'},
+
+        //other
+        {CellType.Portal,'='},
     };
 
     private Dictionary<CellType, ConsoleColor> colorMap = new Dictionary<CellType, ConsoleColor>
     {
-        {CellType.Wall, ConsoleColor.DarkBlue},
-        {CellType.Floor, ConsoleColor.White},
-        {CellType.Empty, ConsoleColor.Gray},
+        {CellType.WallVertical, ConsoleColor.DarkBlue},
+        {CellType.Corners, ConsoleColor.DarkBlue},
+        {CellType.WallHorizontal, ConsoleColor.DarkBlue},
+        {CellType.Floor, ConsoleColor.Gray},
     };
 
     private CellType[] walkableCellTypes = new CellType[] 
     {
         CellType.Floor,
+        CellType.Web,
+        CellType.Grass,
+        CellType.Torch,
     };
 
     public Map()
@@ -76,8 +87,7 @@ public class Map
             new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,5,4,4,4,4,4,4,5,1,1,1,5,4,4,4,4,4,4,5,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
             new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,1,1,1,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
             new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,1,1,1,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
-            new []{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,1,1,1,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,},
-        }
+     };
 
         int y = mapData.Length;
         int x = mapData[0].Length;
