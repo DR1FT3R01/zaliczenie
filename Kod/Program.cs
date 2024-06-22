@@ -3,7 +3,9 @@
 
     static void Main(string[] args)
     {
-        Console.ReadKey();
+        Console.CursorVisible = false;
+        WriteTextLine("Press Any key to start...");
+        Console.ReadKey(true);
 
         Map map = new Map();
 
@@ -12,10 +14,9 @@
         ComposedObject healthPotion = new ComposedObject('O', "Health Potion", map);
         ComposedNpc hoodedFigure = new ComposedNpc('*', "Hooded Figure", new Point(60, 6));
 
-        Point mapOrigin = new Point(4, 1);
+        Point mapOrigin = new Point(4, 2);
 
         Console.SetCursorPosition(0, 0);
-        Console.CursorVisible = false;
         Console.Clear();
 
         if (map.Size.X + mapOrigin.X >= 0 && map.Size.X + mapOrigin.X < Console.BufferWidth
@@ -38,11 +39,11 @@
                     map.RedrawCellAt(player.Movement.PreviousPosition);
                     map.DrawSomethingAt(player.VisualComponent.Visual, player.PositionComponent.Position);
 
+                    ConsoleKeyInfo pressedKey;
                     if (player.InteractionComponent.IsTargetInRange(troll.PositionComponent.Position))
                     {
                         WriteTextLine($"Troll is nearby! Press E to Attack or Any other key to continue...");
 
-                        ConsoleKeyInfo pressedKey;
                         pressedKey = Console.ReadKey();
                         if (pressedKey.Key == ConsoleKey.E)
                         {
@@ -53,10 +54,26 @@
                         else
                         {
                             ClearTextLine(0);
-                            WriteTextLine("You ran away!");
+                            WriteTextLine("Nothing happened!");
                         }
 
                     }
+                    else if (player.InteractionComponent.IsTargetInRange(hoodedFigure.PositionComponent.Position))
+                    {
+                        WriteTextLine($"Hooded Figure is nearby! Press E to Interact or Any other key to continue...");
+
+                        pressedKey = Console.ReadKey();
+                        if (pressedKey.Key == ConsoleKey.E)
+                        {
+                            player.InteractionComponent.StartDialogue();
+                        }
+                        else
+                        {
+                            ClearTextLine(0);
+                            WriteTextLine("Nothing happened!");
+                        }
+                    }
+
                     else
                     {
                         Console.SetCursorPosition(0, 0);
@@ -85,8 +102,8 @@
         }
         else
         {
-            Console.WriteLine("Terminal window is too small, make it bigger");
-            Console.ReadKey(true); 
+            WriteTextLine("Terminal window is too small, make it bigger");
+            Console.ReadKey(true);
         }
     }
 
