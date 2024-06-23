@@ -17,13 +17,13 @@ public class GameLogic
         Console.Clear();
     }
 
-    public static void ClearTextLine()
+    public void ClearTextLine()
     {
         Console.SetCursorPosition(0, 0);
         Console.Write(new string(' ', Console.WindowWidth));
     }
 
-    public static void WriteTextLine(string text)
+    public void WriteTextLine(string text)
     {
         ClearTextLine();
         Console.SetCursorPosition(0, 0);

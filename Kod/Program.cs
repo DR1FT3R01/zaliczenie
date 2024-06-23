@@ -42,7 +42,7 @@
 
                     if (player.InteractionComponent.IsTargetInRange(troll.PositionComponent.Position) && troll.Health.IsAlive())
                     {
-                        WriteTextLine($"{troll.NameTagComponent.NameTag} is nearby! Press E to Attack or Any other key to continue...");
+                        gameLogic.WriteTextLine($"{troll.NameTagComponent.NameTag} is nearby! Press E to Attack or Any other key to continue...");
                         if (player.InteractionComponent.CheckPressedKey())
                         {
                             player.InteractionComponent.Attack(troll.Health, troll.NameTagComponent.NameTag);
@@ -50,12 +50,12 @@
                             if(!troll.Health.IsAlive())
                             {
                                 map.RedrawCellAt(troll.PositionComponent.Position);
-                                WriteTextLine("You killed the Enemy!");
+                                gameLogic.WriteTextLine("You killed the Enemy!");
                             }
                         }
                         else
                         {
-                            WriteTextLine("Nothing happened!");
+                            gameLogic.WriteTextLine("Nothing happened!");
                         }
                     }
 
@@ -63,7 +63,7 @@
                     
                     else if (player.InteractionComponent.IsTargetInRange(hoodedFigure.PositionComponent.Position))
                     {
-                        WriteTextLine($"{hoodedFigure.NameTagComponent.NameTag} is nearby! Press E to Interact or Any other key to continue...");
+                        gameLogic.WriteTextLine($"{hoodedFigure.NameTagComponent.NameTag} is nearby! Press E to Interact or Any other key to continue...");
 
                         if (player.InteractionComponent.CheckPressedKey())
                         {
@@ -71,7 +71,7 @@
                         }
                         else
                         {
-                            WriteTextLine("Nothing happened!");
+                            gameLogic.WriteTextLine("Nothing happened!");
                         }
                     }
                     
@@ -79,7 +79,7 @@
                     
                     else if (player.InteractionComponent.IsTargetInRange(healthPotion.PositionComponent.Position) && healthPotion.isPickedUp == false)
                     {
-                        WriteTextLine($"{healthPotion.NameTagComponent.NameTag} is nearby! Press E to Pick up or Any other key to continue...");
+                        gameLogic.WriteTextLine($"{healthPotion.NameTagComponent.NameTag} is nearby! Press E to Pick up or Any other key to continue...");
 
                         if (player.InteractionComponent.CheckPressedKey())
                         {
@@ -89,7 +89,7 @@
                         else
                         {
                             map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.VisualComponent.VisualColor, healthPotion.PositionComponent.Position);
-                            WriteTextLine("Nothing happened!");
+                            gameLogic.WriteTextLine("Nothing happened!");
                         }
                     }
                     
@@ -97,7 +97,7 @@
                     
                     else
                     {
-                        ClearTextLine();
+                        gameLogic.ClearTextLine();
                     }
                 }
 
@@ -127,18 +127,5 @@
         {
             gameLogic.TerminalIsToSmallError();
         }
-    }
-
-    public static void ClearTextLine()
-    {
-        Console.SetCursorPosition(0, 0);
-        Console.Write(new string(' ', Console.WindowWidth));
-    }
-
-    public static void WriteTextLine(string text)
-    {
-        ClearTextLine();
-        Console.SetCursorPosition(0, 0);
-        Console.Write(text);
     }
 }
