@@ -41,7 +41,7 @@
                     map.DrawSomethingAt(player.VisualComponent.Visual, player.VisualComponent.VisualColor, player.PositionComponent.Position);
 
                     ConsoleKeyInfo pressedKey;
-                    if (player.InteractionComponent.IsTargetInRange(troll.PositionComponent.Position))
+                    if (player.InteractionComponent.IsTargetInRange(troll.PositionComponent.Position) && troll.Health.IsAlive())
                     {
                         WriteTextLine($"{troll.NameTagComponent.NameTag} is nearby! Press E to Attack or Any other key to continue...");
 
@@ -50,6 +50,11 @@
                         {
                             player.InteractionComponent.Attack(troll.Health);
                             WriteTextLine($"You attacked the Enemy! {troll.NameTagComponent.NameTag} health:{troll.Health.Hp}");
+                            if(!troll.Health.IsAlive())
+                            {
+                                map.RedrawCellAt(troll.PositionComponent.Position);
+                                WriteTextLine("You killed the Enemy!");
+                            }
                         }
                         else
                         {
@@ -97,10 +102,13 @@
                 nextPosition = troll.Movement.GetNextPosition();
                 if (map.IsPointCorrect(nextPosition))
                 {
+                    if(troll.Health.IsAlive())
+                    {
                     troll.Movement.Move(nextPosition);
 
                     map.RedrawCellAt(troll.Movement.PreviousPosition);
                     map.DrawSomethingAt(troll.VisualComponent.Visual, troll.VisualComponent.VisualColor, troll.PositionComponent.Position);
+                    }
                 }
 
                 nextPosition = hoodedFigure.Movement.GetNextPosition();

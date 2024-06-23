@@ -13,10 +13,20 @@ internal class HealthComponent
         Hp += amount;
     }
 
-        public void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         Hp -= amount;
     }
 
-    //TODO check if character is alive
+    public bool IsAlive()
+    {
+        if (hp > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
