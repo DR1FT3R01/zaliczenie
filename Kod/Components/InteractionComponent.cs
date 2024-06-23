@@ -15,8 +15,9 @@ internal class InteractionComponent
         int distanceX = Math.Abs(positionComponent.Position.X - targetPosition.X);
         int distanceY = Math.Abs(positionComponent.Position.Y - targetPosition.Y);
 
-        return (distanceX <= range && distanceY == 0 || distanceX == 0 && distanceY <= range);
+        return (distanceX == range && distanceY == 0 || distanceX == 0 && distanceY == range);
     }
+
 
     public void Attack(HealthComponent targetHealthComponent)
     {
@@ -83,6 +84,15 @@ internal class InteractionComponent
         Console.CursorVisible = false;
 
     }
+
+
+public void PickUp(ComposedObject targetObject, int amount)
+{
+    WriteTextLine($"Added {amount}x {targetObject.NameTagComponent.NameTag} to your inventory.");
+
+    //TODO InventoryComponent.Add
+    targetObject.isPickedUp = true;
+}
 
     public static void ClearTextLine()
     {

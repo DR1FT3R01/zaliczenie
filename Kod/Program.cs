@@ -26,8 +26,9 @@
 
             map.DrawSomethingAt(player.VisualComponent.Visual, player.VisualComponent.VisualColor, player.PositionComponent.Position);
             map.DrawSomethingAt(troll.VisualComponent.Visual, troll.VisualComponent.VisualColor, troll.PositionComponent.Position);
-            map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.VisualComponent.VisualColor, healthPotion.PositionComponent.Position);
             map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.VisualComponent.VisualColor, hoodedFigure.PositionComponent.Position);
+
+            map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.VisualComponent.VisualColor, healthPotion.PositionComponent.Position);
 
             while (true)
             {
@@ -42,42 +43,54 @@
                     ConsoleKeyInfo pressedKey;
                     if (player.InteractionComponent.IsTargetInRange(troll.PositionComponent.Position))
                     {
-                        WriteTextLine($"Troll is nearby! Press E to Attack or Any other key to continue...");
+                        WriteTextLine($"{troll.NameTagComponent.NameTag} is nearby! Press E to Attack or Any other key to continue...");
 
-                        pressedKey = Console.ReadKey();
+                        pressedKey = Console.ReadKey(true);
                         if (pressedKey.Key == ConsoleKey.E)
                         {
                             player.InteractionComponent.Attack(troll.Health);
-                            ClearTextLine(0);
-                            WriteTextLine($"You attacked the Enemy! Enemy health:{troll.Health.Hp}");
+                            WriteTextLine($"You attacked the Enemy! {troll.NameTagComponent.NameTag} health:{troll.Health.Hp}");
                         }
                         else
                         {
-                            ClearTextLine(0);
                             WriteTextLine("Nothing happened!");
                         }
 
                     }
                     else if (player.InteractionComponent.IsTargetInRange(hoodedFigure.PositionComponent.Position))
                     {
-                        WriteTextLine($"Hooded Figure is nearby! Press E to Interact or Any other key to continue...");
+                        WriteTextLine($"{hoodedFigure.NameTagComponent.NameTag} is nearby! Press E to Interact or Any other key to continue...");
 
-                        pressedKey = Console.ReadKey();
+                        pressedKey = Console.ReadKey(true);
                         if (pressedKey.Key == ConsoleKey.E)
                         {
                             player.InteractionComponent.StartDialogue();
                         }
                         else
                         {
-                            ClearTextLine(0);
+                            WriteTextLine("Nothing happened!");
+                        }
+                    }
+                    else if (player.InteractionComponent.IsTargetInRange(healthPotion.PositionComponent.Position) && healthPotion.isPickedUp == false)
+                    {
+                        WriteTextLine($"{healthPotion.NameTagComponent.NameTag} is nearby! Press E to Pick up or Any other key to continue...");
+
+                        pressedKey = Console.ReadKey(true);
+                        if (pressedKey.Key == ConsoleKey.E)
+                        {
+                            player.InteractionComponent.PickUp(healthPotion, 1);
+                            map.RedrawCellAt(healthPotion.PositionComponent.Position);
+                        }
+                        else
+                        {
+                            map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.VisualComponent.VisualColor, healthPotion.PositionComponent.Position);
                             WriteTextLine("Nothing happened!");
                         }
                     }
 
                     else
                     {
-                        Console.SetCursorPosition(0, 0);
-                        Console.Write(new string(' ', Console.WindowWidth));
+                        ClearTextLine();
                     }
                 }
 
@@ -107,16 +120,15 @@
         }
     }
 
-    public static void ClearTextLine(int row)
+    public static void ClearTextLine()
     {
-        int currentLineCursor = row;
-        Console.SetCursorPosition(0, row);
+        Console.SetCursorPosition(0, 0);
         Console.Write(new string(' ', Console.WindowWidth));
-        Console.SetCursorPosition(0, currentLineCursor);
     }
 
     public static void WriteTextLine(string text)
     {
+        ClearTextLine();
         Console.SetCursorPosition(0, 0);
         Console.Write(text);
     }

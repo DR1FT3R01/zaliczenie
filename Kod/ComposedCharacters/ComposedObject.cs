@@ -4,6 +4,7 @@ class ComposedObject
     public RandomPositionComponent PositionComponent { get; }
     public Map CurrentMap { get; }
     public NameTagComponent NameTagComponent { get; }
+    public bool isPickedUp { get; set; } = false;
     public ComposedObject(char visual, ConsoleColor visualColor, string nameTag, Map map)
     {
         CurrentMap = map;
