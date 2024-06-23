@@ -6,6 +6,7 @@ internal class InteractionComponent
     ConsoleKeyInfo pressedKey;
     private int range = 1;
     private int strength = 10;
+    private int healingAmount = 30;
     private string? providedSign;
     private readonly PositionComponent positionComponent;
 
@@ -40,6 +41,18 @@ internal class InteractionComponent
         targetHealthComponent.TakeDamage(strength);
     }
 
+    public void Heal(HealthComponent targetHealthComponent, InventoryComponent targetInventory)
+    {
+        if(targetInventory.HealthPotionAmount > 0)
+        {
+            targetHealthComponent.Heal(healingAmount);
+            targetInventory.RemovePotionFromInventory(1);
+        }
+        else
+        {
+            WriteTextLine("You don't have any potions!");
+        }
+    }
 
     public void StartDialogue(InventoryComponent playerInventory)
     {
