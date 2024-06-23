@@ -1,5 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
+using Microsoft.VisualBasic;
+
 internal class InteractionComponent
 {
+    ConsoleKeyInfo pressedKey;
     private int range = 1;
     private int strength = 10;
     private string? providedSign;
@@ -18,10 +22,23 @@ internal class InteractionComponent
         return (distanceX == range && distanceY == 0 || distanceX == 0 && distanceY == range);
     }
 
+    public bool CheckPressedKey()
+    {
+        pressedKey = Console.ReadKey(true);
+        if (pressedKey.Key == ConsoleKey.E)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-    public void Attack(HealthComponent targetHealthComponent)
+    public void Attack(HealthComponent targetHealthComponent, string targetNameTag)
     {
         targetHealthComponent.TakeDamage(strength);
+        WriteTextLine($"You attacked the Enemy! {targetNameTag} health:{targetHealthComponent.Hp}");
     }
 
 
@@ -62,11 +79,11 @@ internal class InteractionComponent
         {
             if (guess < generatedNumber)
             {
-            WriteTextLine($"[Attempt(s) left: {attempts}] Try something higher: ");
+                WriteTextLine($"[Attempt(s) left: {attempts}] Try something higher: ");
             }
             else if (guess > generatedNumber)
             {
-            WriteTextLine($"[Attempt(s) left: {attempts}] Try something lower: ");
+                WriteTextLine($"[Attempt(s) left: {attempts}] Try something lower: ");
             }
             attempts -= 1;
             int.TryParse(Console.ReadLine()?.Trim(), out guess);
@@ -76,7 +93,7 @@ internal class InteractionComponent
         {
             WriteTextLine($"You guessed! Here's your prize... bye for now...");
         }
-        else 
+        else
         {
             WriteTextLine("Sorry, it's not your day... bye...");
         }
@@ -84,23 +101,21 @@ internal class InteractionComponent
         Console.CursorVisible = false;
 
     }
+    public void PickUp(ComposedObject targetObject, int amount)
+    {
+        WriteTextLine($"Added {amount}x {targetObject.NameTagComponent.NameTag} to your inventory.");
 
+        //TODO InventoryComponent.Add
+        targetObject.isPickedUp = true;
+    }
 
-public void PickUp(ComposedObject targetObject, int amount)
-{
-    WriteTextLine($"Added {amount}x {targetObject.NameTagComponent.NameTag} to your inventory.");
-
-    //TODO InventoryComponent.Add
-    targetObject.isPickedUp = true;
-}
-
-    public static void ClearTextLine()
+    private static void ClearTextLine()
     {
         Console.SetCursorPosition(0, 0);
         Console.Write(new string(' ', Console.WindowWidth));
     }
 
-    public static void WriteTextLine(string text)
+    private static void WriteTextLine(string text)
     {
         ClearTextLine();
         Console.SetCursorPosition(0, 0);

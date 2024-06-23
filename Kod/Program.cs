@@ -3,21 +3,19 @@
 
     static void Main(string[] args)
     {
-        Console.CursorVisible = false;
-        WriteTextLine("Press Any key to start...");
-        Console.ReadKey(true);
+        GameLogic gameLogic= new GameLogic();
 
+        gameLogic.StartingScreen();
+        
         Map map = new Map();
+        Point mapOrigin = new Point(4, 2);
 
         ComposedPlayer player = new ComposedPlayer('█', ConsoleColor.Cyan, new Point(9, 4));
         ComposedEnemy troll = new ComposedEnemy('T', ConsoleColor.Green, "Troll", new Point(40, 25));
         ComposedObject healthPotion = new ComposedObject('O', ConsoleColor.Red, "Health Potion", map);
         ComposedNpc hoodedFigure = new ComposedNpc('*', ConsoleColor.Yellow, "Hooded Figure", new Point(60, 6));
 
-        Point mapOrigin = new Point(4, 2);
-
-        Console.SetCursorPosition(0, 0);
-        Console.Clear();
+        gameLogic.ClearTerminal();
 
         if (map.Size.X + mapOrigin.X >= 0 && map.Size.X + mapOrigin.X < Console.BufferWidth
             && map.Size.Y + mapOrigin.Y >= 0 && map.Size.Y + mapOrigin.Y < Console.BufferHeight)
@@ -39,17 +37,16 @@
 
                     map.RedrawCellAt(player.Movement.PreviousPosition);
                     map.DrawSomethingAt(player.VisualComponent.Visual, player.VisualComponent.VisualColor, player.PositionComponent.Position);
+                    
+                    //=== IsEnemyInRange
 
-                    ConsoleKeyInfo pressedKey;
                     if (player.InteractionComponent.IsTargetInRange(troll.PositionComponent.Position) && troll.Health.IsAlive())
                     {
                         WriteTextLine($"{troll.NameTagComponent.NameTag} is nearby! Press E to Attack or Any other key to continue...");
-
-                        pressedKey = Console.ReadKey(true);
-                        if (pressedKey.Key == ConsoleKey.E)
+                        if (player.InteractionComponent.CheckPressedKey())
                         {
-                            player.InteractionComponent.Attack(troll.Health);
-                            WriteTextLine($"You attacked the Enemy! {troll.NameTagComponent.NameTag} health:{troll.Health.Hp}");
+                            player.InteractionComponent.Attack(troll.Health, troll.NameTagComponent.NameTag);
+                            
                             if(!troll.Health.IsAlive())
                             {
                                 map.RedrawCellAt(troll.PositionComponent.Position);
@@ -60,14 +57,15 @@
                         {
                             WriteTextLine("Nothing happened!");
                         }
-
                     }
+
+                    //=== IsNPCInRange
+                    
                     else if (player.InteractionComponent.IsTargetInRange(hoodedFigure.PositionComponent.Position))
                     {
                         WriteTextLine($"{hoodedFigure.NameTagComponent.NameTag} is nearby! Press E to Interact or Any other key to continue...");
 
-                        pressedKey = Console.ReadKey(true);
-                        if (pressedKey.Key == ConsoleKey.E)
+                        if (player.InteractionComponent.CheckPressedKey())
                         {
                             player.InteractionComponent.StartDialogue();
                         }
@@ -76,12 +74,14 @@
                             WriteTextLine("Nothing happened!");
                         }
                     }
+                    
+                    //=== IsObjectInRange
+                    
                     else if (player.InteractionComponent.IsTargetInRange(healthPotion.PositionComponent.Position) && healthPotion.isPickedUp == false)
                     {
                         WriteTextLine($"{healthPotion.NameTagComponent.NameTag} is nearby! Press E to Pick up or Any other key to continue...");
 
-                        pressedKey = Console.ReadKey(true);
-                        if (pressedKey.Key == ConsoleKey.E)
+                        if (player.InteractionComponent.CheckPressedKey())
                         {
                             player.InteractionComponent.PickUp(healthPotion, 1);
                             map.RedrawCellAt(healthPotion.PositionComponent.Position);
@@ -92,7 +92,9 @@
                             WriteTextLine("Nothing happened!");
                         }
                     }
-
+                    
+                    //=== NothingInRange
+                    
                     else
                     {
                         ClearTextLine();
@@ -123,8 +125,7 @@
         }
         else
         {
-            WriteTextLine("Terminal window is too small, make it bigger");
-            Console.ReadKey(true);
+            gameLogic.TerminalIsToSmallError();
         }
     }
 
