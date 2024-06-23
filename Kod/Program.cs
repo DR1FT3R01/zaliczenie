@@ -26,6 +26,8 @@
             map.DrawSomethingAt(troll.VisualComponent.Visual, troll.VisualComponent.VisualColor, troll.PositionComponent.Position);
             map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.VisualComponent.VisualColor, hoodedFigure.PositionComponent.Position);
 
+            Point inventoryPosition = new Point(75, 0);
+            map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
 
             while (true)
             {
@@ -68,7 +70,8 @@
 
                         if (player.InteractionComponent.CheckPressedKey())
                         {
-                            player.InteractionComponent.StartDialogue();
+                            player.InteractionComponent.StartDialogue(player.Inventory);
+                            map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
                         }
                         else
                         {
@@ -84,8 +87,9 @@
 
                         if (player.InteractionComponent.CheckPressedKey())
                         {
-                            player.InteractionComponent.PickUp(healthPotion, 1);
+                            player.InteractionComponent.PickUp(healthPotion, 1, player.Inventory);
                             map.RedrawCellAt(healthPotion.PositionComponent.Position);
+                            map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
                         }
                         else
                         {
@@ -115,6 +119,7 @@
                         {
                             troll.InteractionComponent.Attack(player.Health);
                             gameLogic.WriteTextLine($"{troll.NameTagComponent.NameTag} attacked you! Press Any key to continue...");
+                            map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
                             Console.ReadKey(true);
                             gameLogic.ClearTextLine();
                         }

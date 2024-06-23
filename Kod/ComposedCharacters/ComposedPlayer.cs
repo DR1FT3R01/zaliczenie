@@ -6,6 +6,7 @@ class ComposedPlayer
     public MovementComponent Movement { get; }
     public IInputComponent InputComponent { get; }
     public InteractionComponent InteractionComponent { get; }
+    public InventoryComponent Inventory { get; }
 
     public ComposedPlayer(char visual, ConsoleColor visualColor, Point startingPosition)
     {
@@ -15,5 +16,6 @@ class ComposedPlayer
         InputComponent = new KeyboardInputComponent();
         Movement = new MovementComponent(PositionComponent, InputComponent);
         InteractionComponent = new InteractionComponent(PositionComponent);
+        Inventory = new InventoryComponent();
     }
 }

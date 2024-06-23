@@ -41,7 +41,7 @@ internal class InteractionComponent
     }
 
 
-    public void StartDialogue()
+    public void StartDialogue(InventoryComponent playerInventory)
     {
         Console.CursorVisible = true;
         do
@@ -52,7 +52,7 @@ internal class InteractionComponent
 
         if (providedSign == "y")
         {
-            MiniGame();
+            MiniGame(playerInventory);
         }
         else
         {
@@ -61,11 +61,11 @@ internal class InteractionComponent
         }
     }
 
-    private void MiniGame()
+    private void MiniGame(InventoryComponent playerInventory)
     {
         int attempts = 5;
         int miniGameMinRange = 0;
-        int miniGameMaxRange = 100;
+        int miniGameMaxRange = 30;
 
         Random rng = new Random();
         int generatedNumber = rng.Next(miniGameMinRange, miniGameMaxRange + 1);
@@ -90,6 +90,7 @@ internal class InteractionComponent
 
         if (guess == generatedNumber)
         {
+            playerInventory.AddToInventory(1);
             WriteTextLine($"You guessed! Here's your prize... bye for now...");
         }
         else
@@ -100,21 +101,20 @@ internal class InteractionComponent
         Console.CursorVisible = false;
 
     }
-    public void PickUp(ComposedObject targetObject, int amount)
+    public void PickUp(ComposedObject targetObject, int amount, InventoryComponent playerInventory)
     {
         WriteTextLine($"Added {amount}x {targetObject.NameTagComponent.NameTag} to your inventory.");
-
-        //TODO InventoryComponent.Add
+         playerInventory.AddToInventory(1);
         targetObject.isPickedUp = true;
     }
 
-    private static void ClearTextLine()
+    private void ClearTextLine()
     {
         Console.SetCursorPosition(0, 0);
         Console.Write(new string(' ', Console.WindowWidth));
     }
 
-    private static void WriteTextLine(string text)
+    private void WriteTextLine(string text)
     {
         ClearTextLine();
         Console.SetCursorPosition(0, 0);
