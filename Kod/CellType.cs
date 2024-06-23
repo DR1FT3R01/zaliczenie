@@ -15,4 +15,5 @@ public enum CellType
     Gold = 12,
     Left = 13,
     Right = 14,
+    Empty = 15,
 }

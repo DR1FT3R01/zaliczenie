@@ -9,6 +9,7 @@
 
         Map map = new Map();
         Point mapOrigin = new Point(4, 2);
+        Point inventoryPosition = new Point(77, 2);
 
         ComposedPlayer player = new ComposedPlayer('█', ConsoleColor.Cyan, new Point(9, 4));
         ComposedEnemy troll = new ComposedEnemy('T', ConsoleColor.Green, "Troll", new Point(40, 25));
@@ -26,7 +27,6 @@
             map.DrawSomethingAt(troll.VisualComponent.Visual, troll.VisualComponent.VisualColor, troll.PositionComponent.Position);
             map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.VisualComponent.VisualColor, hoodedFigure.PositionComponent.Position);
 
-            Point inventoryPosition = new Point(75, 0);
             map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
 
             while (true)
@@ -135,7 +135,7 @@
                     map.RedrawCellAt(hoodedFigure.Movement.PreviousPosition);
                     map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.VisualComponent.VisualColor, hoodedFigure.PositionComponent.Position);
                 }
-                
+
                 if (!healthPotion.isPickedUp)
                 {
                     map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.VisualComponent.VisualColor, healthPotion.PositionComponent.Position);
