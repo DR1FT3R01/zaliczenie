@@ -7,12 +7,12 @@ internal class InventoryComponent
     }
     int potionAmount = 0;
 
-    public void AddToInventory(int amount)
+    public void AddPotionToInventory(int amount)
     {
         potionAmount += amount;
     }
 
-    public void RemoveFromInventory(int amount)
+    public void RemovePotionFromInventory(int amount)
     {
         potionAmount -= amount;
     }

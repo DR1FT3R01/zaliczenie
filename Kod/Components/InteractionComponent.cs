@@ -19,7 +19,7 @@ internal class InteractionComponent
         int distanceX = Math.Abs(positionComponent.Position.X - targetPosition.X);
         int distanceY = Math.Abs(positionComponent.Position.Y - targetPosition.Y);
 
-        return (distanceX == range && distanceY == 0 || distanceX == 0 && distanceY == range);
+        return (distanceX <= range && distanceY == 0 || distanceX == 0 && distanceY <= range);
     }
 
     public bool CheckPressedKey()
@@ -90,7 +90,7 @@ internal class InteractionComponent
 
         if (guess == generatedNumber)
         {
-            playerInventory.AddToInventory(1);
+            playerInventory.AddPotionToInventory(1);
             WriteTextLine($"You guessed! Here's your prize... bye for now...");
         }
         else
@@ -104,7 +104,7 @@ internal class InteractionComponent
     public void PickUp(ComposedObject targetObject, int amount, InventoryComponent playerInventory)
     {
         WriteTextLine($"Added {amount}x {targetObject.NameTagComponent.NameTag} to your inventory.");
-         playerInventory.AddToInventory(1);
+         playerInventory.AddPotionToInventory(1);
         targetObject.isPickedUp = true;
     }
 

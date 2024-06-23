@@ -29,7 +29,7 @@
 
             map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
 
-            while (true)
+            while (player.Health.IsAlive())
             {
 
                 Point nextPosition = player.Movement.GetNextPosition();
@@ -126,7 +126,6 @@
                     }
 
                 }
-
                 nextPosition = hoodedFigure.Movement.GetNextPosition();
                 if (map.IsPointCorrect(nextPosition))
                 {
@@ -141,6 +140,9 @@
                     map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.VisualComponent.VisualColor, healthPotion.PositionComponent.Position);
                 }
             }
+            gameLogic.ClearTerminal();
+            gameLogic.WriteTextLine("You died! Press Any key to quit...");
+            Console.ReadKey(true);
         }
         else
         {
