@@ -35,10 +35,9 @@ internal class InteractionComponent
         }
     }
 
-    public void Attack(HealthComponent targetHealthComponent, string targetNameTag)
+    public void Attack(HealthComponent targetHealthComponent)
     {
         targetHealthComponent.TakeDamage(strength);
-        WriteTextLine($"You attacked the Enemy! {targetNameTag} health:{targetHealthComponent.Hp}");
     }
 
 
