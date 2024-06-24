@@ -31,8 +31,12 @@
 
             while (player.Health.IsAlive())
             {
-
                 Point nextPosition = player.Movement.GetNextPosition();
+                // if (pressedKey.Key == ConsoleKey.H)
+                // {
+                //     player.InteractionComponent.Heal(player.Health, player.Inventory);
+                // }
+
                 if (map.IsPointCorrect(nextPosition))
                 {
                     player.Movement.Move(nextPosition);
@@ -115,16 +119,15 @@
                         map.RedrawCellAt(troll.Movement.PreviousPosition);
                         map.DrawSomethingAt(troll.VisualComponent.Visual, troll.VisualComponent.VisualColor, troll.PositionComponent.GetPosition());
 
-                        // if (troll.InteractionComponent.IsTargetInRange(player.PositionComponent.Position))
-                        // {
-                        //     troll.InteractionComponent.Attack(player.Health);
-                        //     gameLogic.WriteTextLine($"{troll.NameTagComponent.NameTag} attacked you! Press Any key to continue...");
-                        //     map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
-                        //     Console.ReadKey(true);
-                        //     gameLogic.ClearTextLine();
-                        // }
+                        if (troll.AttackComponent.IsTargetInRange(player.PositionComponent.GetPosition()))
+                        {
+                            troll.AttackComponent.Attack(player.Health);
+                            gameLogic.WriteTextLine($"{troll.NameTagComponent.NameTag} attacked you! Press Any key to continue...");
+                            map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
+                            Console.ReadKey(true);
+                            gameLogic.ClearTextLine();
+                        }
                     }
-
                 }
                 nextPosition = hoodedFigure.Movement.GetNextPosition();
                 if (map.IsPointCorrect(nextPosition))

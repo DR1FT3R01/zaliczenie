@@ -18,6 +18,6 @@ class ComposedPlayer
         Movement = new MovementComponent(PositionComponent, InputComponent);
         InteractionComponent = new InteractionComponent(PositionComponent);
         Inventory = new InventoryComponent();
-        AttackComponent = new AttackComponent();
+        AttackComponent = new AttackComponent(PositionComponent);
     }
 }

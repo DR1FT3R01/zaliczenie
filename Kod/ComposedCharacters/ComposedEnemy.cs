@@ -18,7 +18,7 @@ class ComposedEnemy
         InputComponent = new RandomInputComponent();
         Movement = new MovementComponent(PositionComponent, InputComponent);
         NameTagComponent = new NameTagComponent(nameTag);
-        AttackComponent = new AttackComponent();
+        AttackComponent = new AttackComponent(PositionComponent);
     }
 
 }
