@@ -46,9 +46,9 @@
                     if (player.InteractionComponent.IsTargetInRange(troll.PositionComponent.Position) && troll.Health.IsAlive())
                     {
                         gameLogic.WriteTextLine($"{troll.NameTagComponent.NameTag} is nearby! Press E to Attack or Any other key to continue...");
-                        if (player.InteractionComponent.CheckPressedKey())
+                        if (player.InteractionComponent.IsPressedKeyCorrect())
                         {
-                            player.InteractionComponent.Attack(troll.Health);
+                            player.AttackComponent.Attack(troll.Health);
                             gameLogic.WriteTextLine($"You attacked the Enemy! {troll.NameTagComponent.NameTag} health:{troll.Health.Hp}");
 
                             if (!troll.Health.IsAlive())
@@ -69,7 +69,7 @@
                     {
                         gameLogic.WriteTextLine($"{hoodedFigure.NameTagComponent.NameTag} is nearby! Press E to Interact or Any other key to continue...");
 
-                        if (player.InteractionComponent.CheckPressedKey())
+                        if (player.InteractionComponent.IsPressedKeyCorrect())
                         {
                             hoodedFigure.Dialogue.StartDialogue(player.Inventory);
                             map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
@@ -86,7 +86,7 @@
                     {
                         gameLogic.WriteTextLine($"{healthPotion.NameTagComponent.NameTag} is nearby! Press E to Pick up or Any other key to continue...");
 
-                        if (player.InteractionComponent.CheckPressedKey())
+                        if (player.InteractionComponent.IsPressedKeyCorrect())
                         {
                             player.InteractionComponent.PickUp(healthPotion, 1, player.Inventory);
                             map.RedrawCellAt(healthPotion.PositionComponent.Position);
@@ -116,14 +116,14 @@
                         map.RedrawCellAt(troll.Movement.PreviousPosition);
                         map.DrawSomethingAt(troll.VisualComponent.Visual, troll.VisualComponent.VisualColor, troll.PositionComponent.Position);
 
-                        if (troll.InteractionComponent.IsTargetInRange(player.PositionComponent.Position))
-                        {
-                            troll.InteractionComponent.Attack(player.Health);
-                            gameLogic.WriteTextLine($"{troll.NameTagComponent.NameTag} attacked you! Press Any key to continue...");
-                            map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
-                            Console.ReadKey(true);
-                            gameLogic.ClearTextLine();
-                        }
+                        // if (troll.InteractionComponent.IsTargetInRange(player.PositionComponent.Position))
+                        // {
+                        //     troll.InteractionComponent.Attack(player.Health);
+                        //     gameLogic.WriteTextLine($"{troll.NameTagComponent.NameTag} attacked you! Press Any key to continue...");
+                        //     map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
+                        //     Console.ReadKey(true);
+                        //     gameLogic.ClearTextLine();
+                        // }
                     }
 
                 }

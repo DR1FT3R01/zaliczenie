@@ -5,7 +5,6 @@ internal class InteractionComponent
 {
     ConsoleKeyInfo pressedKey;
     private int range = 1;
-    private int strength = 10;
     private int healingAmount = 30;
     private readonly PositionComponent positionComponent;
 
@@ -22,7 +21,7 @@ internal class InteractionComponent
         return (distanceX <= range && distanceY == 0 || distanceX == 0 && distanceY <= range);
     }
 
-    public bool CheckPressedKey()
+    public bool IsPressedKeyCorrect()
     {
         pressedKey = Console.ReadKey(true);
         if (pressedKey.Key == ConsoleKey.E)
@@ -33,11 +32,6 @@ internal class InteractionComponent
         {
             return false;
         }
-    }
-
-    public void Attack(HealthComponent targetHealthComponent)
-    {
-        targetHealthComponent.TakeDamage(strength);
     }
 
     public void Heal(HealthComponent targetHealthComponent, InventoryComponent targetInventory)
