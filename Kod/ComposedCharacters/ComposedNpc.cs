@@ -1,16 +1,18 @@
 class ComposedNpc
 {
     public VisualComponent VisualComponent { get; }
-    public PositionComponent PositionComponent { get; }
+    public IPositionComponent PositionComponent { get; }
     public MovementComponent Movement { get; }
     public IInputComponent InputComponent { get; }
     public NameTagComponent NameTagComponent { get; }
     public DialogueComponent Dialogue { get; }
+    public Map Map { get; }
 
-    public ComposedNpc(char visual, ConsoleColor visualColor, string nameTag, Point startingPoint)
+    public ComposedNpc(char visual, ConsoleColor visualColor, string nameTag, Map currentMap)
     {
+        Map = currentMap;
         VisualComponent = new VisualComponent(visual, visualColor);
-        PositionComponent = new PositionComponent(startingPoint);
+        PositionComponent = new RandomPositionComponent(currentMap);
         InputComponent = new RandomInputComponent ();
         Movement = new MovementComponent(PositionComponent, InputComponent);
         NameTagComponent = new NameTagComponent(nameTag);

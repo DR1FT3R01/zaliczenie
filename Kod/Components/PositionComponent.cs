@@ -1,9 +1,4 @@
-public class PositionComponent
+interface IPositionComponent
 {
-    public Point Position { get; set; }
-
-    public PositionComponent(Point startingPosition)
-    {
-        Position = new Point(startingPosition);
-    }
+    Point GetPosition();
 }
