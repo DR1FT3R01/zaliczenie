@@ -9,7 +9,6 @@ public class Point
         Y = y;
     }
 
-    //copy constructor
     public Point(Point other)
     {
         X = other.X;

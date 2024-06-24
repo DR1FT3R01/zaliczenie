@@ -7,7 +7,6 @@ internal class InteractionComponent
     private int range = 1;
     private int strength = 10;
     private int healingAmount = 30;
-    private string? providedSign;
     private readonly PositionComponent positionComponent;
 
     public InteractionComponent(PositionComponent positionComponent)
@@ -54,66 +53,6 @@ internal class InteractionComponent
         }
     }
 
-    public void StartDialogue(InventoryComponent playerInventory)
-    {
-        Console.CursorVisible = true;
-        do
-        {
-            WriteTextLine("Do you want to play a game? (y/n): ");
-            providedSign = Console.ReadLine()?.ToLower().Trim();
-        } while (providedSign != "y" && providedSign != "n");
-
-        if (providedSign == "y")
-        {
-            MiniGame(playerInventory);
-        }
-        else
-        {
-            Console.CursorVisible = false;
-            WriteTextLine("Let me know if you change your mind...");
-        }
-    }
-
-    private void MiniGame(InventoryComponent playerInventory)
-    {
-        int attempts = 5;
-        int miniGameMinRange = 0;
-        int miniGameMaxRange = 30;
-
-        Random rng = new Random();
-        int generatedNumber = rng.Next(miniGameMinRange, miniGameMaxRange + 1);
-
-        WriteTextLine($"You have {attempts} attempts. Guess a number between {miniGameMinRange} and {miniGameMaxRange}: ");
-        int.TryParse(Console.ReadLine()?.Trim(), out int guess);
-        attempts -= 1;
-
-        while (attempts > 0)
-        {
-            if (guess < generatedNumber)
-            {
-                WriteTextLine($"[Attempt(s) left: {attempts}] Try something higher: ");
-            }
-            else if (guess > generatedNumber)
-            {
-                WriteTextLine($"[Attempt(s) left: {attempts}] Try something lower: ");
-            }
-            attempts -= 1;
-            int.TryParse(Console.ReadLine()?.Trim(), out guess);
-        }
-
-        if (guess == generatedNumber)
-        {
-            playerInventory.AddPotionToInventory(1);
-            WriteTextLine($"You guessed! Here's your prize... bye for now...");
-        }
-        else
-        {
-            WriteTextLine("Sorry, it's not your day... bye...");
-        }
-
-        Console.CursorVisible = false;
-
-    }
     public void PickUp(ComposedObject targetObject, int amount, InventoryComponent playerInventory)
     {
         WriteTextLine($"Added {amount}x {targetObject.NameTagComponent.NameTag} to your inventory.");
@@ -133,5 +72,4 @@ internal class InteractionComponent
         Console.SetCursorPosition(0, 0);
         Console.Write(text);
     }
-
 }

@@ -13,7 +13,7 @@
 
         ComposedPlayer player = new ComposedPlayer('█', ConsoleColor.Cyan, new Point(9, 4));
         ComposedEnemy troll = new ComposedEnemy('T', ConsoleColor.Green, "Troll", new Point(40, 25));
-        ComposedObject healthPotion = new ComposedObject('O', ConsoleColor.Red, "Health Potion", map);
+        ComposedObject healthPotion = new ComposedObject('&', ConsoleColor.Red, "Health Potion", map);
         ComposedNpc hoodedFigure = new ComposedNpc('*', ConsoleColor.Yellow, "Hooded Figure", new Point(60, 6));
 
         gameLogic.ClearTerminal();
@@ -26,6 +26,7 @@
             map.DrawSomethingAt(player.VisualComponent.Visual, player.VisualComponent.VisualColor, player.PositionComponent.Position);
             map.DrawSomethingAt(troll.VisualComponent.Visual, troll.VisualComponent.VisualColor, troll.PositionComponent.Position);
             map.DrawSomethingAt(hoodedFigure.VisualComponent.Visual, hoodedFigure.VisualComponent.VisualColor, hoodedFigure.PositionComponent.Position);
+            map.DrawSomethingAt(healthPotion.VisualComponent.Visual, healthPotion.VisualComponent.VisualColor, healthPotion.PositionComponent.Position);
 
             map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
 
@@ -70,7 +71,7 @@
 
                         if (player.InteractionComponent.CheckPressedKey())
                         {
-                            player.InteractionComponent.StartDialogue(player.Inventory);
+                            hoodedFigure.Dialogue.StartDialogue(player.Inventory);
                             map.UpdatePlayerStats(inventoryPosition, mapOrigin, player.Health.Hp, player.Inventory.HealthPotionAmount);
                         }
                         else

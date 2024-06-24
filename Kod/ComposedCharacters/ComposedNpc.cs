@@ -5,6 +5,7 @@ class ComposedNpc
     public MovementComponent Movement { get; }
     public IInputComponent InputComponent { get; }
     public NameTagComponent NameTagComponent { get; }
+    public DialogueComponent Dialogue { get; }
 
     public ComposedNpc(char visual, ConsoleColor visualColor, string nameTag, Point startingPoint)
     {
@@ -13,5 +14,6 @@ class ComposedNpc
         InputComponent = new RandomInputComponent ();
         Movement = new MovementComponent(PositionComponent, InputComponent);
         NameTagComponent = new NameTagComponent(nameTag);
+        Dialogue = new DialogueComponent();
     }
 }
