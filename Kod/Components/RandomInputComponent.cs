@@ -9,7 +9,12 @@ class RandomInputComponent : IInputComponent
 
     public Point GetDirection()
     {
-        //TODO delete diagonally walking
-        return new Point(rng.Next(-1,2), rng.Next(-1,2));
+        int x = rng.Next(-1,2);
+        int y = 0;
+        if (x == 0)
+        {
+            y = rng.Next(-1,2);
+        }
+        return new Point(x, y);
     }
 }
